@@ -27,38 +27,36 @@ nav{
   position:fixed;top:0;left:0;right:0;z-index:200;height:68px;
   display:flex;align-items:center;justify-content:space-between;
   padding:0 48px;
-  background:transparent;
+  background:rgba(28,18,10,.72);
+  backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);
+  border-bottom:1px solid rgba(255,255,255,.06);
   transition:background .3s,border-color .3s;
-  border-bottom:1px solid transparent;
 }
 nav.solid{
   background:rgba(245,240,232,.97);
   backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);
   border-bottom-color:rgba(44,31,20,.08);
 }
-/* Logo come immagine — dimensione uguale al testo nav */
 .nav-logo{
   display:flex;align-items:center;text-decoration:none;
 }
 .nav-logo img{
-  height:22px; /* stessa altezza visiva dei link 14px bold */
+  height:28px;
   width:auto;
-  filter:brightness(0) invert(1); /* bianco sopra video */
+  filter:brightness(0) invert(1);
   transition:filter .3s;
 }
 nav.solid .nav-logo img{
-  filter:none; /* logo originale (bianco su nero) su sfondo crema — resta visibile */
-  /* se il logo ha sfondo trasparente con testo bianco, usiamo versione scura */
-  filter:brightness(0); /* testo diventa nero */
+  filter:brightness(0);
 }
 .nav-links{display:flex;gap:4px;list-style:none;align-items:center}
 .nav-links a{
-  font-size:14px;font-weight:600;color:rgba(245,240,232,.88);
+  font-size:14px;font-weight:600;color:rgba(245,240,232,.9);
   text-decoration:none;padding:7px 15px;border-radius:var(--rp);
   transition:background .15s,color .15s;white-space:nowrap;
 }
 nav.solid .nav-links a{color:var(--sc)}
-.nav-links a:hover{background:rgba(255,255,255,.15)}
+.nav-links a:hover{background:rgba(255,255,255,.12)}
 nav.solid .nav-links a:hover{background:var(--fa)}
 .nav-b2b{background:var(--m)!important;color:var(--cr)!important}
 .nav-b2b:hover{background:var(--md)!important}
@@ -258,7 +256,7 @@ nav.solid .nav-links a:hover{background:var(--fa)}
   color:var(--m);min-width:26px;padding-top:2px;flex-shrink:0;
 }
 .mv-t h4{font-size:16px;font-weight:700;color:var(--cr);margin-bottom:5px;letter-spacing:-.02em}
-.mv-t p{font-size:14px;line-height:1.68;color:rgba(245,240,232,.58)}
+.mv-t p{font-size:14px;line-height:1.68;color:rgba(245,240,232,.82)}
 
 /* ── CHI SIAMO ── */
 #about{background:var(--cr);padding:100px 56px}
@@ -329,47 +327,45 @@ nav.solid .nav-links a:hover{background:var(--fa)}
 
 /* ── FOOTER — sfondo crema, testo scuro ── */
 footer{
-  background:var(--cr);
+  background:var(--m);
   padding:72px 56px 40px;
-  border-top:1px solid var(--fa);
 }
 @media(max-width:640px){footer{padding:56px 20px 32px}}
 
 .ft-grid{
   display:grid;grid-template-columns:1.6fr 1fr 1fr;gap:40px;
-  padding-bottom:48px;border-bottom:1px solid var(--fa);margin-bottom:32px;
+  padding-bottom:48px;border-bottom:1px solid rgba(255,255,255,.15);margin-bottom:32px;
 }
 @media(max-width:768px){.ft-grid{grid-template-columns:1fr;gap:28px}}
 
 .ft-brand img{
   height:28px;width:auto;
-  filter:brightness(0); /* logo bianco → nero sul crema */
-  opacity:.85;margin-bottom:10px;
+  filter:brightness(0) invert(1);
+  margin-bottom:10px;
 }
-.ft-tagline{font-size:14px;color:var(--mu);font-style:italic;line-height:1.55}
+.ft-tagline{font-size:14px;color:rgba(255,255,255,.75);font-style:italic;line-height:1.55}
 
 .ft-col-lbl{
   font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;
-  color:var(--mu);opacity:.7;margin-bottom:14px;
+  color:rgba(255,255,255,.55);margin-bottom:14px;
 }
 .ft-col a,.ft-col p{
   font-size:15px;font-weight:500;line-height:1.9;
-  color:var(--sc);text-decoration:none;display:block;opacity:.75;
+  color:rgba(255,255,255,.85);text-decoration:none;display:block;
 }
-.ft-col a:hover{opacity:1;color:var(--m)}
+.ft-col a:hover{color:var(--cr)}
 
 .ft-cta{
   display:inline-flex;align-items:center;margin-top:14px;
   background:var(--sc);color:var(--cr);padding:10px 22px;
   border-radius:var(--rp);font-size:14px;font-weight:700;
-  text-decoration:none;opacity:1!important;
-  transition:background .15s;
+  text-decoration:none;transition:background .15s;
 }
-.ft-cta:hover{background:var(--m)}
+.ft-cta:hover{background:var(--md)}
 
 .ft-bottom{
   display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;
-  font-size:13px;color:var(--mu);opacity:.6;
+  font-size:13px;color:rgba(255,255,255,.45);
 }
 </style>
 </head>
