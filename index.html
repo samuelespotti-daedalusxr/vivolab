@@ -73,7 +73,7 @@ nav.solid .nav-b2b{background:var(--sc)!important;color:var(--cr)!important}
 .btn-cream:hover{background:var(--wh)}
 .btn-ghost{background:rgba(255,255,255,.15);color:var(--cr);box-shadow:inset 0 0 0 1.5px rgba(255,255,255,.3)}
 .btn-ghost:hover{background:rgba(255,255,255,.25)}
-.btn-dark{background:var(--sc);color:var(--cr)}
+.btn-dark{background:var(--sc);color:#fff}
 .btn-dark:hover{background:var(--m)}
 .btn-red{background:var(--m);color:var(--cr)}
 .btn-red:hover{background:var(--md)}
@@ -107,7 +107,7 @@ nav.solid .nav-b2b{background:var(--sc)!important;color:var(--cr)!important}
   padding:100px 56px 80px;
   background:linear-gradient(to right, var(--m) 72%, transparent 100%);
 }
-@media(max-width:860px){.hero-l{padding:96px 24px 56px;background:rgba(180,78,78,.88)}}
+@media(max-width:860px){.hero-l{padding:96px 24px 56px;background:var(--cr)}}
 
 .hero-pill{
   display:inline-flex;background:rgba(255,255,255,.18);color:var(--cr);
@@ -251,10 +251,11 @@ footer{background:var(--fa);padding:72px 56px 40px;border-top:1px solid rgba(152
 @media(max-width:860px){
   .hero-title{color:var(--sc)}
   .hero-body{color:var(--mu)}
-  .hero-tagline{color:var(--t)}
+  .hero-tagline{color:var(--t);opacity:.8}
   .hero-pill{background:var(--mp);color:var(--md)}
-  .btn-ghost{background:var(--fa);color:var(--sc);box-shadow:inset 0 0 0 1.5px var(--fa)}
-  .btn-ghost:hover{background:var(--farina, var(--fa))}
+  .btn-ghost{background:transparent;color:var(--sc);box-shadow:inset 0 0 0 2px var(--fa)}
+  .btn-ghost:hover{background:var(--fa)}
+  .btn-cream{background:var(--m);color:#fff}
 }
 </style>
 </head>
