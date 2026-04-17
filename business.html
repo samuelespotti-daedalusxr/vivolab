@@ -105,12 +105,13 @@ nav{
 .network-body{font-size:17px;line-height:1.72;color:var(--mu);margin-bottom:32px}
 
 .nf-list{display:flex;flex-direction:column}
-.nf-row-head{display:grid;grid-template-columns:1fr 90px;align-items:start;gap:8px;margin-bottom:4px}
-.nf-row-head h4{font-size:15px;font-weight:700;color:var(--sc);margin:0}
 .nf-row{padding:18px 0;border-bottom:1px solid rgba(152,96,64,.15);display:flex;gap:14px;align-items:flex-start}
 .nf-row:first-child{border-top:1px solid rgba(152,96,64,.15)}
 .nf-ico{width:38px;height:38px;border-radius:var(--rl);flex-shrink:0;background:var(--mp);display:flex;align-items:center;justify-content:center;font-size:17px}
-.nf-txt h4{font-size:15px;font-weight:700;color:var(--sc);margin-bottom:3px}
+.nf-txt{flex:1;min-width:0}
+.nf-row-head{display:flex;align-items:center;justify-content:space-between;gap:8px;margin-bottom:4px}
+.nf-row-head h4{font-size:15px;font-weight:700;color:var(--sc);margin:0;flex:1}
+.nf-row-head .ph{flex-shrink:0}
 .nf-txt p{font-size:13px;line-height:1.65;color:var(--mu)}
 
 /* ═══ PRODOTTI — sfondo crema ═══ */
@@ -122,8 +123,12 @@ nav{
 .off-card{background:var(--wh);border-radius:var(--rx);padding:36px 30px;display:flex;flex-direction:column;gap:10px;border:1px solid var(--fa);transition:transform .2s,box-shadow .2s}
 .off-card:hover{transform:translateY(-4px);box-shadow:0 16px 48px rgba(44,31,20,.08)}
 .off-num{font-size:28px;font-weight:800;color:var(--mp);letter-spacing:-.04em;line-height:1;margin-bottom:4px}
-.off-card-head{display:grid;grid-template-columns:1fr auto;align-items:start;gap:12px;margin-bottom:8px}
-.stat-card-head{display:grid;grid-template-columns:1fr auto;align-items:center;gap:8px;margin-bottom:6px}
+.off-card-head{display:flex;align-items:flex-start;justify-content:space-between;gap:12px;margin-bottom:8px}
+.off-card-head .off-name{flex:1}
+.off-card-head .ph{flex-shrink:0;margin-top:3px}
+.stat-card-head{display:flex;align-items:center;justify-content:space-between;gap:8px;margin-bottom:6px}
+.stat-card-head strong,.stat-card-head h4{flex:1}
+.stat-card-head .ph{flex-shrink:0}
 .off-name{font-size:19px;font-weight:800;letter-spacing:-.03em;color:var(--sc)}
 .off-desc{font-size:14px;line-height:1.68;color:var(--mu);flex:1}
 .off-tag{display:inline-block;background:var(--cr);color:var(--t);font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;padding:4px 12px;border-radius:var(--rp);width:fit-content}
@@ -142,8 +147,10 @@ nav{
 .bun-spec-row{padding:16px 0;border-bottom:1px solid rgba(245,240,232,.2);display:flex;gap:14px;align-items:flex-start}
 .bun-spec-row:first-child{border-top:1px solid rgba(245,240,232,.2)}
 .bun-ico{width:36px;height:36px;border-radius:var(--rl);flex-shrink:0;background:rgba(255,255,255,.15);display:flex;align-items:center;justify-content:center;font-size:16px}
-.bun-spec-head{display:grid;grid-template-columns:1fr 90px;align-items:start;gap:8px;margin-bottom:3px}
-.bun-spec-txt h4{font-size:15px;font-weight:700;color:var(--cr);margin:0}
+.bun-spec-head{display:flex;align-items:center;justify-content:space-between;gap:8px;margin-bottom:3px}
+.bun-spec-head h4{font-size:15px;font-weight:700;color:var(--cr);margin:0;flex:1}
+.bun-spec-head .ph{flex-shrink:0}
+.bun-spec-txt h4{font-size:15px;font-weight:700;color:var(--cr);margin-bottom:3px}
 .bun-spec-txt p{font-size:13px;line-height:1.65;color:rgba(245,240,232,.82)}
 .bun-cta-row{display:flex;gap:12px;flex-wrap:wrap;padding-top:24px}
 
@@ -329,14 +336,14 @@ footer{background:var(--fa);padding:72px 56px 40px;border-top:1px solid rgba(152
         <div class="bun-spec-row">
           <div class="bun-ico">🌾</div>
           <div class="bun-spec-txt">
-            <div class="bun-spec-head"><h4>Pasta madre e latte intero</h4></div>
+            <h4 style="font-size:15px;font-weight:700;color:var(--cr);margin-bottom:3px">Pasta madre e latte intero</h4>
             <p>Consistenza soffice ma strutturata. Regge i condimenti senza inzupparsi. Sapore che bilancia il grasso del burger.</p>
           </div>
         </div>
         <div class="bun-spec-row">
           <div class="bun-ico">⏱</div>
           <div class="bun-spec-txt">
-            <div class="bun-spec-head"><h4>Fermentazione lenta 18–24 ore</h4></div>
+            <h4 style="font-size:15px;font-weight:700;color:var(--cr);margin-bottom:3px">Fermentazione lenta 18–24 ore</h4>
             <p>Più digeribile, più profumato. Si tosta in padella in meno di un minuto. Mantiene la crosta per tutto il servizio.</p>
           </div>
         </div>
@@ -350,7 +357,7 @@ footer{background:var(--fa);padding:72px 56px 40px;border-top:1px solid rgba(152
         <div class="bun-spec-row">
           <div class="bun-ico">📦</div>
           <div class="bun-spec-txt">
-            <div class="bun-spec-head"><h4>Freschi ogni settimana, non surgelati</h4></div>
+            <h4 style="font-size:15px;font-weight:700;color:var(--cr);margin-bottom:3px">Freschi ogni settimana, non surgelati</h4>
             <p>Quantità e consegna concordate sulla tua operatività. Nessun minimo assurdo.</p>
           </div>
         </div>
