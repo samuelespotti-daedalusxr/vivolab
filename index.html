@@ -10,132 +10,55 @@
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 :root{
-  --m:#B44E4E;--md:#8C3A3A;--mp:#F5EAEA;
-  --t:#986040;--tl:#C49070;--tp:#F5EDE4;
-  --cr:#F5F0E8;--sc:#986040;--sm:#7A4E32;
-  --fa:#E8DDD0;--wh:#FFFFFF;--mu:#7A6550;
+  --m:#B44E4E;   /* mattone — sfondo sezioni scure, CTA */
+  --md:#8C3A3A;  /* mattone scuro — hover */
+  --mp:#F5EAEA;  /* mattone pallido — label su bianco/crema */
+  --t:#986040;   /* tabacco — testo secondario su crema */
+  --tl:#C49070;  /* tabacco chiaro */
+  --tp:#F5EDE4;  /* tabacco pallido — label su bianco */
+  --cr:#F5F0E8;  /* crema — sfondo principale */
+  --fa:#E8DDD0;  /* farina — sfondo alternato */
+  --wh:#FFFFFF;  /* bianco — card */
+  --sc:#2C1F14;  /* scuro — testo principale su sfondi chiari */
+  --mu:#5C4030;  /* medio — testo secondario su sfondi chiari */
   --font:'Bricolage Grotesque',system-ui,sans-serif;
   --rp:999px;--rl:16px;--rx:28px;
 }
 html{scroll-behavior:smooth}
-body{font-family:var(--font);background:var(--wh);color:var(--sc);overflow-x:hidden;-webkit-font-smoothing:antialiased}
+body{font-family:var(--font);background:var(--cr);color:var(--sc);overflow-x:hidden;-webkit-font-smoothing:antialiased}
 .fi{opacity:0;transform:translateY(18px);transition:opacity .55s ease,transform .55s ease}
 .fi.on{opacity:1;transform:translateY(0)}
 
-/* ── NAV ── */
+/* NAV */
 nav{
   position:fixed;top:0;left:0;right:0;z-index:200;height:68px;
   display:flex;align-items:center;justify-content:space-between;
   padding:0 48px;
-  background:rgba(152,96,64,.85);
+  background:rgba(180,78,78,.92);
   backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);
-  border-bottom:1px solid rgba(255,255,255,.06);
+  border-bottom:1px solid rgba(255,255,255,.1);
   transition:background .3s,border-color .3s;
 }
 nav.solid{
-  background:rgba(245,240,232,.98);
+  background:rgba(245,240,232,.97);
   backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);
   border-bottom-color:rgba(44,31,20,.08);
 }
-.nav-logo{
-  display:flex;align-items:center;text-decoration:none;
-}
-.nav-logo img{
-  height:36px;
-  width:auto;
-}
+.nav-logo img{height:32px;width:auto;}
+nav.solid .nav-logo img{filter:brightness(0) sepia(1) saturate(2) hue-rotate(330deg) brightness(0.4);}
 .nav-links{display:flex;gap:4px;list-style:none;align-items:center}
 .nav-links a{
-  font-size:14px;font-weight:600;color:rgba(245,240,232,.9);
+  font-size:14px;font-weight:600;color:rgba(245,240,232,.95);
   text-decoration:none;padding:7px 15px;border-radius:var(--rp);
-  transition:background .15s,color .15s;white-space:nowrap;
+  transition:background .15s,color .15s;
 }
 nav.solid .nav-links a{color:var(--sc)}
-.nav-links a:hover{background:rgba(255,255,255,.12)}
+.nav-links a:hover{background:rgba(255,255,255,.15)}
 nav.solid .nav-links a:hover{background:var(--fa)}
-.nav-b2b{background:var(--m)!important;color:var(--cr)!important}
-.nav-b2b:hover{background:var(--md)!important}
-@media(max-width:680px){
-  nav{padding:0 20px}
-  .nav-links li:not(:last-child){display:none}
-}
-
-/* ── HERO: full viewport, video a destra, testo a sinistra ── */
-#hero{
-  position:relative;
-  min-height:100vh;
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  background:var(--t);
-  overflow:hidden;
-}
-@media(max-width:860px){
-  #hero{grid-template-columns:1fr}
-}
-
-/* colonna sinistra — testo */
-.hero-l{
-  position:relative;z-index:2;
-  display:flex;flex-direction:column;justify-content:center;
-  padding:100px 56px 80px;
-  /* leggero gradiente per staccare dal video */
-  background:linear-gradient(to right, var(--t) 75%, transparent 100%);
-}
-@media(max-width:860px){
-  .hero-l{
-    padding:96px 24px 56px;
-    background:rgba(152,96,64,.88);
-  }
-}
-
-.hero-pill{
-  display:inline-flex;align-items:center;
-  background:var(--m);color:var(--cr);
-  font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;
-  padding:7px 18px;border-radius:var(--rp);
-  margin-bottom:28px;width:fit-content;
-}
-
-.hero-title{
-  font-size:clamp(44px,5.5vw,80px);
-  font-weight:800;line-height:.94;letter-spacing:-.04em;
-  color:var(--cr);margin-bottom:24px;
-}
-
-.hero-body{
-  font-size:clamp(15px,1.4vw,17px);line-height:1.72;
-  color:rgba(245,240,232,.72);max-width:400px;margin-bottom:10px;
-}
-
-.hero-tagline{
-  font-size:14px;font-style:italic;font-weight:500;
-  color:rgba(245,240,232,.38);margin-bottom:36px;
-}
-
-.hero-ctas{display:flex;gap:12px;flex-wrap:wrap}
-
-/* colonna destra — video */
-.hero-r{
-  position:relative;overflow:hidden;
-}
-@media(max-width:860px){
-  /* su mobile il video va dietro al testo */
-  .hero-r{
-    position:absolute;inset:0;z-index:0;
-  }
-}
-.hero-r video{
-  position:absolute;inset:0;
-  width:100%;height:100%;
-  object-fit:cover;object-position:center;
-}
-/* sfumatura sinistra del video per fondersi col testo */
-.hero-r::before{
-  content:'';
-  position:absolute;inset:0;z-index:1;
-  background:linear-gradient(to right, var(--t) 0%, transparent 45%);
-  pointer-events:none;
-}
+.nav-b2b{background:rgba(44,20,10,.3)!important;color:var(--cr)!important}
+nav.solid .nav-b2b{background:var(--sc)!important;color:var(--cr)!important}
+.nav-b2b:hover{background:rgba(44,20,10,.5)!important}
+@media(max-width:680px){nav{padding:0 20px}.nav-links li:not(:last-child){display:none}}
 
 /* BTN */
 .btn{
@@ -145,39 +68,82 @@ nav.solid .nav-links a:hover{background:var(--fa)}
   border:none;cursor:pointer;
   transition:transform .15s,background .18s,box-shadow .15s;
 }
-.btn:hover{transform:translateY(-2px);box-shadow:0 8px 28px rgba(44,31,20,.18)}
+.btn:hover{transform:translateY(-2px);box-shadow:0 8px 28px rgba(44,31,20,.2)}
 .btn-cream{background:var(--cr);color:var(--sc)}
 .btn-cream:hover{background:var(--wh)}
-.btn-ghost{background:rgba(255,255,255,.1);color:var(--cr);box-shadow:inset 0 0 0 1.5px rgba(255,255,255,.22)}
-.btn-ghost:hover{background:rgba(255,255,255,.18)}
-.btn-dark{background:var(--md);color:var(--cr)}
+.btn-ghost{background:rgba(255,255,255,.15);color:var(--cr);box-shadow:inset 0 0 0 1.5px rgba(255,255,255,.3)}
+.btn-ghost:hover{background:rgba(255,255,255,.25)}
+.btn-dark{background:var(--sc);color:var(--cr)}
 .btn-dark:hover{background:var(--m)}
 .btn-red{background:var(--m);color:var(--cr)}
 .btn-red:hover{background:var(--md)}
-.btn-outline{background:transparent;color:var(--sc);box-shadow:inset 0 0 0 2px var(--fa)}
-.btn-outline:hover{background:var(--fa);box-shadow:none}
 
-/* ── LABEL / TITOLO SEZIONE ── */
+/* LABEL */
 .lbl{
-  display:inline-flex;background:var(--mp);color:var(--m);
+  display:inline-flex;background:var(--mp);color:var(--md);
   font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;
   padding:5px 14px;border-radius:var(--rp);margin-bottom:20px;
 }
-.lbl.inv{background:var(--mp);color:var(--m)}
-.ttl{
-  font-size:clamp(32px,4.5vw,58px);font-weight:800;line-height:.98;
-  letter-spacing:-.035em;color:var(--sc);margin-bottom:16px;
-}
-.ttl.inv{color:var(--sc)}
-.sub{font-size:17px;line-height:1.72;color:var(--mu);max-width:540px}
-.sub.inv{color:var(--mu)}
+.lbl.on-m{background:rgba(255,255,255,.2);color:var(--cr)}
 
-/* ── PRODOTTI ── */
+/* TITOLI */
+.ttl{font-size:clamp(32px,4.5vw,58px);font-weight:800;line-height:.98;letter-spacing:-.035em;color:var(--sc);margin-bottom:16px}
+.ttl.on-m{color:var(--cr)}
+.sub{font-size:17px;line-height:1.72;color:var(--mu);max-width:540px}
+.sub.on-m{color:rgba(245,240,232,.88)}
+
+/* ═══ HERO — sfondo mattone, video a destra ═══ */
+#hero{
+  min-height:100vh;
+  display:grid;grid-template-columns:1fr 1fr;
+  background:var(--m);
+  overflow:hidden;
+}
+@media(max-width:860px){#hero{grid-template-columns:1fr}}
+
+.hero-l{
+  position:relative;z-index:2;
+  display:flex;flex-direction:column;justify-content:center;
+  padding:100px 56px 80px;
+  background:linear-gradient(to right, var(--m) 72%, transparent 100%);
+}
+@media(max-width:860px){.hero-l{padding:96px 24px 56px;background:rgba(180,78,78,.88)}}
+
+.hero-pill{
+  display:inline-flex;background:rgba(255,255,255,.18);color:var(--cr);
+  font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;
+  padding:7px 18px;border-radius:var(--rp);margin-bottom:28px;width:fit-content;
+}
+.hero-title{
+  font-size:clamp(52px,6.5vw,88px);font-weight:800;
+  line-height:.93;letter-spacing:-.04em;color:var(--cr);margin-bottom:24px;
+}
+.hero-body{
+  font-size:clamp(15px,1.5vw,17px);line-height:1.72;
+  color:rgba(245,240,232,.9);max-width:420px;margin-bottom:10px;
+}
+.hero-tagline{
+  font-size:15px;font-style:italic;font-weight:500;
+  color:rgba(245,240,232,.6);margin-bottom:36px;
+}
+.hero-ctas{display:flex;gap:12px;flex-wrap:wrap}
+
+.hero-r{position:relative;overflow:hidden}
+@media(max-width:860px){.hero-r{position:absolute;inset:0;z-index:0}}
+.hero-r video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.hero-r::before{
+  content:'';position:absolute;inset:0;z-index:1;
+  background:linear-gradient(to right, var(--m) 0%, transparent 40%);
+  pointer-events:none;
+}
+
+/* ═══ PRODOTTI — sfondo crema ═══ */
 #prodotti{background:var(--cr);padding:100px 56px}
 @media(max-width:700px){#prodotti{padding:72px 20px}}
 
 .prodotti-grid{
-  display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:52px;margin-bottom:72px;
+  display:grid;grid-template-columns:repeat(4,1fr);gap:14px;
+  margin-top:52px;margin-bottom:72px;
 }
 @media(max-width:1080px){.prodotti-grid{grid-template-columns:repeat(2,1fr)}}
 @media(max-width:540px){.prodotti-grid{grid-template-columns:1fr}}
@@ -185,13 +151,13 @@ nav.solid .nav-links a:hover{background:var(--fa)}
 .pc{
   background:var(--wh);border-radius:var(--rx);padding:32px 26px;
   display:flex;flex-direction:column;gap:10px;
+  border:1px solid var(--fa);
   transition:transform .2s,box-shadow .2s;
 }
 .pc:hover{transform:translateY(-4px);box-shadow:0 16px 48px rgba(44,31,20,.1)}
-.pc-ico{
-  width:44px;height:44px;border-radius:var(--rl);
-  background:var(--mp);display:flex;align-items:center;justify-content:center;
-  font-size:20px;margin-bottom:4px;
+.pc-num{
+  font-size:32px;font-weight:800;color:var(--mp);
+  letter-spacing:-.04em;line-height:1;margin-bottom:8px;
 }
 .pc-name{font-size:18px;font-weight:800;letter-spacing:-.03em;color:var(--sc)}
 .pc-desc{font-size:13px;line-height:1.65;color:var(--mu);flex:1}
@@ -201,39 +167,24 @@ nav.solid .nav-links a:hover{background:var(--fa)}
   padding:4px 12px;border-radius:var(--rp);width:fit-content;
 }
 
-/* ── CAROSELLO ── */
-.carousel-head{
-  display:flex;align-items:center;gap:16px;margin-bottom:20px;
-}
-.carousel-head span{
-  font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--mu);
-  white-space:nowrap;
-}
+/* CAROSELLO */
+.carousel-head{display:flex;align-items:center;gap:16px;margin-bottom:20px}
+.carousel-head span{font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--mu);white-space:nowrap}
 .carousel-head::after{content:'';flex:1;height:1px;background:var(--fa)}
-
 .car-wrap{overflow:hidden;width:100%}
-.car-track{
-  display:flex;gap:14px;width:max-content;
-  animation:car 30s linear infinite;
-}
+.car-track{display:flex;gap:14px;width:max-content;animation:car 30s linear infinite}
 .car-track:hover{animation-play-state:paused}
 @keyframes car{from{transform:translateX(0)}to{transform:translateX(-50%)}}
-
 .car-item{
   width:240px;height:240px;border-radius:var(--rx);
   background:var(--fa);flex-shrink:0;overflow:hidden;
-  display:flex;align-items:center;justify-content:center;
-  flex-direction:column;gap:8px;
+  display:flex;align-items:center;justify-content:center;flex-direction:column;gap:8px;
 }
 .car-item img{width:100%;height:100%;object-fit:cover;transition:transform .4s}
 .car-item:hover img{transform:scale(1.04)}
-.car-ph{
-  display:flex;flex-direction:column;align-items:center;gap:6px;
-  color:var(--mu);font-size:11px;font-weight:600;letter-spacing:.06em;
-  text-transform:uppercase;text-align:center;padding:16px;
-}
+.car-ph{display:flex;flex-direction:column;align-items:center;gap:6px;color:var(--mu);font-size:11px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;text-align:center;padding:16px}
 
-/* ── MANIFESTO ── */
+/* ═══ MANIFESTO — sfondo farina ═══ */
 #manifesto{
   background:var(--fa);padding:100px 56px;
   display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center;
@@ -241,134 +192,69 @@ nav.solid .nav-links a:hover{background:var(--fa)}
 @media(max-width:820px){#manifesto{grid-template-columns:1fr;padding:72px 20px;gap:48px}}
 
 .mv-list{display:flex;flex-direction:column}
-.mv-row{
-  padding:22px 0;border-bottom:1px solid rgba(152,96,64,.15);
-  display:flex;gap:20px;
-}
+.mv-row{padding:22px 0;border-bottom:1px solid rgba(152,96,64,.15);display:flex;gap:20px}
 .mv-row:first-child{border-top:1px solid rgba(152,96,64,.15)}
-.mv-n{
-  font-size:12px;font-weight:700;letter-spacing:.1em;
-  color:var(--m);min-width:26px;padding-top:2px;flex-shrink:0;
-}
+.mv-n{font-size:12px;font-weight:700;letter-spacing:.1em;color:var(--m);min-width:26px;padding-top:2px;flex-shrink:0}
 .mv-t h4{font-size:16px;font-weight:700;color:var(--sc);margin-bottom:5px;letter-spacing:-.02em}
 .mv-t p{font-size:14px;line-height:1.68;color:var(--mu)}
 
-/* ── CHI SIAMO ── */
+/* ═══ CHI SIAMO — sfondo crema ═══ */
 #about{background:var(--cr);padding:100px 56px}
 @media(max-width:700px){#about{padding:72px 20px}}
 
 .about-grid{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:start}
 @media(max-width:860px){.about-grid{grid-template-columns:1fr;gap:36px}}
 
-.simone-card{
-  background:var(--wh);border-radius:var(--rx);padding:36px;
-}
+.simone-card{background:var(--wh);border-radius:var(--rx);padding:36px;border:1px solid var(--fa)}
 .sc-top{display:flex;align-items:center;gap:14px;margin-bottom:18px}
 .sc-av{
   width:48px;height:48px;border-radius:var(--rp);
-  background:var(--t);color:var(--cr);
+  background:var(--m);color:var(--cr);
   display:flex;align-items:center;justify-content:center;
   font-size:15px;font-weight:800;flex-shrink:0;
 }
 .sc-name{font-size:20px;font-weight:800;letter-spacing:-.03em;color:var(--sc);margin-bottom:4px}
-.sc-role{
-  display:inline-block;background:var(--mp);color:var(--m);
-  font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;
-  padding:4px 12px;border-radius:var(--rp);
-}
-.sc-bio{font-size:15px;line-height:1.72;color:var(--mu);margin-bottom:18px}
-.sc-link{
-  display:inline-flex;align-items:center;gap:5px;
-  font-size:13px;font-weight:700;color:var(--t);text-decoration:none;
-  border-bottom:1.5px solid var(--fa);padding-bottom:2px;
-  transition:color .15s,border-color .15s;
-}
-.sc-link:hover{color:var(--m);border-color:var(--m)}
+.sc-role{display:inline-block;background:var(--mp);color:var(--md);font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;padding:4px 12px;border-radius:var(--rp)}
+.sc-bio{font-size:15px;line-height:1.72;color:var(--mu);margin-bottom:18px;margin-top:16px}
+.sc-link{display:inline-flex;align-items:center;gap:5px;font-size:13px;font-weight:700;color:var(--m);text-decoration:none;border-bottom:1.5px solid var(--mp);padding-bottom:2px;transition:color .15s,border-color .15s}
+.sc-link:hover{color:var(--md);border-color:var(--md)}
 
-/* press card — sfondo crema, testo leggibile */
-.press-card{
-  background:var(--fa);border-radius:var(--rx);padding:36px;
-  display:flex;flex-direction:column;gap:16px;
-  margin-bottom:16px;
-}
-.press-lbl{
-  display:inline-flex;background:var(--mp);color:var(--m);
-  font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;
-  padding:5px 14px;border-radius:var(--rp);width:fit-content;
-}
-.press-q{
-  font-size:clamp(17px,1.8vw,21px);font-weight:700;line-height:1.4;
-  color:var(--sc);letter-spacing:-.02em;
-}
+/* press card — sfondo farina */
+.press-card{background:var(--fa);border-radius:var(--rx);padding:36px;display:flex;flex-direction:column;gap:16px;margin-bottom:16px;border:1px solid rgba(152,96,64,.15)}
+.press-lbl{display:inline-flex;background:var(--mp);color:var(--md);font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:5px 14px;border-radius:var(--rp);width:fit-content}
+.press-q{font-size:clamp(17px,1.8vw,20px);font-weight:700;line-height:1.4;color:var(--sc);letter-spacing:-.02em}
 .press-src{font-size:13px;color:var(--mu);font-weight:500}
-.press-award{
-  display:flex;align-items:flex-start;gap:12px;
-  padding:16px 0;border-top:1px solid var(--fa);
-  border-top-color:rgba(44,31,20,.1);
-}
+.press-award{display:flex;align-items:flex-start;gap:12px;padding:14px 0;border-top:1px solid rgba(152,96,64,.15)}
 .pa-dot{width:8px;height:8px;border-radius:50%;background:var(--m);flex-shrink:0;margin-top:5px}
 .pa-t p:first-child{font-size:14px;font-weight:700;color:var(--sc);margin-bottom:2px}
 .pa-t p:last-child{font-size:12px;color:var(--mu)}
 
-/* teaser B2B */
-.b2b-teaser{
-  background:var(--t);border-radius:var(--rx);padding:40px;
-}
-.b2b-teaser h3{
-  font-size:clamp(20px,2.5vw,28px);font-weight:800;letter-spacing:-.03em;
-  color:var(--cr);margin-bottom:10px;line-height:1.1;
-}
-.b2b-teaser p{font-size:15px;color:rgba(245,240,232,.65);line-height:1.65;margin-bottom:24px}
+/* teaser B2B — sfondo mattone */
+.b2b-teaser{background:var(--m);border-radius:var(--rx);padding:40px}
+.b2b-teaser h3{font-size:clamp(20px,2.5vw,28px);font-weight:800;letter-spacing:-.03em;color:var(--cr);margin-bottom:10px;line-height:1.1}
+.b2b-teaser p{font-size:15px;color:rgba(245,240,232,.88);line-height:1.65;margin-bottom:24px}
 
-/* ── FOOTER — sfondo crema, testo scuro ── */
-footer{
-  background:var(--m);
-  padding:72px 56px 40px;
-}
+/* ═══ FOOTER — sfondo mattone ═══ */
+footer{background:var(--m);padding:72px 56px 40px}
 @media(max-width:640px){footer{padding:56px 20px 32px}}
-
-.ft-grid{
-  display:grid;grid-template-columns:1.6fr 1fr 1fr;gap:40px;
-  padding-bottom:48px;border-bottom:1px solid rgba(255,255,255,.15);margin-bottom:32px;
-}
+.ft-grid{display:grid;grid-template-columns:1.6fr 1fr 1fr;gap:40px;padding-bottom:48px;border-bottom:1px solid rgba(255,255,255,.2);margin-bottom:32px}
 @media(max-width:768px){.ft-grid{grid-template-columns:1fr;gap:28px}}
-
-.ft-brand img{
-  height:40px;width:auto;
-  margin-bottom:10px;
-}
-.ft-tagline{font-size:14px;color:rgba(255,255,255,.75);font-style:italic;line-height:1.55}
-
-.ft-col-lbl{
-  font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;
-  color:rgba(255,255,255,.55);margin-bottom:14px;
-}
-.ft-col a,.ft-col p{
-  font-size:15px;font-weight:500;line-height:1.9;
-  color:rgba(255,255,255,.85);text-decoration:none;display:block;
-}
+.ft-brand img{height:36px;width:auto;margin-bottom:10px}
+.ft-tagline{font-size:14px;color:rgba(245,240,232,.75);font-style:italic;line-height:1.55}
+.ft-col-lbl{font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:rgba(245,240,232,.6);margin-bottom:14px}
+.ft-col a,.ft-col p{font-size:15px;font-weight:500;line-height:1.9;color:rgba(245,240,232,.9);text-decoration:none;display:block}
 .ft-col a:hover{color:var(--cr)}
-
-.ft-cta{
-  display:inline-flex;align-items:center;margin-top:14px;
-  background:rgba(44,20,10,.35);color:var(--cr);padding:10px 22px;
-  border-radius:var(--rp);font-size:14px;font-weight:700;
-  text-decoration:none;transition:background .15s;
-}
-.ft-cta:hover{background:var(--md)}
-
-.ft-bottom{
-  display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;
-  font-size:13px;color:rgba(255,255,255,.45);
-}
+.ft-cta{margin-top:14px;display:inline-flex;align-items:center;background:var(--cr);color:var(--sc);padding:10px 22px;border-radius:var(--rp);font-size:14px;font-weight:700;text-decoration:none;transition:background .15s}
+.ft-cta:hover{background:var(--wh)}
+.ft-bottom{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;font-size:13px;color:rgba(245,240,232,.5)}
 </style>
 </head>
 <body>
 
 <!-- NAV -->
 <nav id="nav">
-  <a href="index.html" class="nav-logo">
-    <img src="vivolab_logo_white.png" alt="Vivo Lab">
+  <a href="index.html" style="display:flex;align-items:center;text-decoration:none">
+    <img src="vivolab_logo_white.png" alt="Vivo Lab" style="height:32px;width:auto">
   </a>
   <ul class="nav-links">
     <li><a href="#prodotti">Il pane</a></li>
@@ -378,29 +264,20 @@ footer{
   </ul>
 </nav>
 
-<!-- ═══ HERO ═══ -->
+<!-- HERO -->
 <section id="hero">
-  <!-- SINISTRA: testo -->
   <div class="hero-l">
     <span class="hero-pill fi">Gatteo a Mare · Romagna</span>
-
     <h1 class="hero-title fi" style="transition-delay:.08s">vivolab</h1>
-
     <p class="hero-body fi" style="transition-delay:.16s">
       Vivo Lab è un laboratorio di panificazione artigianale. Produciamo pane, lievitati e fermentati con la cura di un mestiere antico e la precisione di un processo moderno.
     </p>
-
-    <p class="hero-tagline fi" style="transition-delay:.22s">
-      Artigianale nella sostanza. Precisione nel processo.
-    </p>
-
+    <p class="hero-tagline fi" style="transition-delay:.22s">Artigianale nella sostanza. Precisione nel processo.</p>
     <div class="hero-ctas fi" style="transition-delay:.28s">
       <a href="#prodotti" class="btn btn-cream">Scopri il pane</a>
       <a href="business.html" class="btn btn-ghost">Per le attività ↗</a>
     </div>
   </div>
-
-  <!-- DESTRA: video -->
   <div class="hero-r">
     <video autoplay muted loop playsinline preload="auto">
       <source src="hero.mp4" type="video/mp4">
@@ -408,86 +285,76 @@ footer{
   </div>
 </section>
 
-<!-- ═══ PRODOTTI ═══ -->
+<!-- PRODOTTI -->
 <section id="prodotti">
   <span class="lbl fi">Quello che facciamo</span>
   <h2 class="ttl fi">Il pane. I lievitati.<br>I fermentati.</h2>
-  <p class="sub fi">
-    Lavoriamo con pasta madre viva, farine selezionate e fermentazioni lente. Il risultato è un pane che si conserva, che profuma, che si ricorda.
-  </p>
+  <p class="sub fi">Lavoriamo con pasta madre viva, farine selezionate e fermentazioni lente. Un pane che si conserva, che profuma, che si ricorda.</p>
 
   <div class="prodotti-grid fi" style="transition-delay:.08s">
     <div class="pc">
-      
+      <p class="pc-num">01</p>
       <p class="pc-name">Pane da tavola</p>
       <p class="pc-desc">Impasto a lunga fermentazione, crosta croccante, alveolatura aperta. Formati e farine cambiano con la stagione.</p>
-      <span class="pc-tag">Pane da tavola</span>
+      <span class="pc-tag">Pane</span>
     </div>
     <div class="pc">
-      
+      <p class="pc-num">02</p>
       <p class="pc-name">Lievitati &amp; brioche</p>
       <p class="pc-desc">Frolle, cornetti al burro, brioche. Fatti per essere mangiati ancora caldi.</p>
       <span class="pc-tag">Colazione</span>
     </div>
     <div class="pc">
-      
+      <p class="pc-num">03</p>
       <p class="pc-name">Focacce</p>
       <p class="pc-desc">In teglia, con rosmarino, con pomodoro. Impasto indiretto, alveolatura aperta. Cambia con quello che ci piace.</p>
       <span class="pc-tag">Focaccia</span>
     </div>
     <div class="pc">
-      
+      <p class="pc-num">04</p>
       <p class="pc-name">Grandi lievitati</p>
       <p class="pc-desc">Panettone d'inverno, colomba in primavera. Nessun compromesso su lievito, ingredienti, tempi di maturazione.</p>
       <span class="pc-tag">Stagionale</span>
     </div>
   </div>
 
-  <!-- CAROSELLO -->
-  <div class="carousel-head fi">
-    <span>Dal laboratorio · @mi_chiamo_simone_</span>
-  </div>
+  <div class="carousel-head fi"><span>Dal laboratorio · @mi_chiamo_simone_</span></div>
   <div class="car-wrap fi" style="transition-delay:.06s">
     <div class="car-track">
-      <!-- Slot A — sostituire con <img src="..."> quando disponibili le foto Instagram -->
-      <div class="car-item"><div class="car-ph"><span style="font-size:28px">📸</span><span>Foto Instagram</span></div></div>
-      <div class="car-item"><div class="car-ph"><span style="font-size:28px">🍞</span><span>Pane fresco</span></div></div>
-      <div class="car-item"><div class="car-ph"><span style="font-size:28px">🔥</span><span>Appena sfornato</span></div></div>
-      <div class="car-item"><div class="car-ph"><span style="font-size:28px">🌾</span><span>Dal laboratorio</span></div></div>
-      <div class="car-item"><div class="car-ph"><span style="font-size:28px">🫙</span><span>Fermentazione</span></div></div>
-      <div class="car-item"><div class="car-ph"><span style="font-size:28px">🥖</span><span>Lievitati</span></div></div>
-      <div class="car-item"><div class="car-ph"><span style="font-size:28px">✨</span><span>Special edition</span></div></div>
-      <div class="car-item"><div class="car-ph"><span style="font-size:28px">🎄</span><span>Grandi lievitati</span></div></div>
-      <!-- Slot B — duplicato per loop continuo -->
-      <div class="car-item"><div class="car-ph"><span style="font-size:28px">📸</span><span>Foto Instagram</span></div></div>
-      <div class="car-item"><div class="car-ph"><span style="font-size:28px">🍞</span><span>Pane fresco</span></div></div>
-      <div class="car-item"><div class="car-ph"><span style="font-size:28px">🔥</span><span>Appena sfornato</span></div></div>
-      <div class="car-item"><div class="car-ph"><span style="font-size:28px">🌾</span><span>Dal laboratorio</span></div></div>
-      <div class="car-item"><div class="car-ph"><span style="font-size:28px">🫙</span><span>Fermentazione</span></div></div>
-      <div class="car-item"><div class="car-ph"><span style="font-size:28px">🥖</span><span>Lievitati</span></div></div>
-      <div class="car-item"><div class="car-ph"><span style="font-size:28px">✨</span><span>Special edition</span></div></div>
-      <div class="car-item"><div class="car-ph"><span style="font-size:28px">🎄</span><span>Grandi lievitati</span></div></div>
+      <div class="car-item"><div class="car-ph"><span style="font-size:26px">📸</span><span>Foto Instagram</span></div></div>
+      <div class="car-item"><div class="car-ph"><span style="font-size:26px">🍞</span><span>Pane fresco</span></div></div>
+      <div class="car-item"><div class="car-ph"><span style="font-size:26px">🔥</span><span>Appena sfornato</span></div></div>
+      <div class="car-item"><div class="car-ph"><span style="font-size:26px">🌾</span><span>Dal laboratorio</span></div></div>
+      <div class="car-item"><div class="car-ph"><span style="font-size:26px">🫙</span><span>Fermentazione</span></div></div>
+      <div class="car-item"><div class="car-ph"><span style="font-size:26px">🥖</span><span>Lievitati</span></div></div>
+      <div class="car-item"><div class="car-ph"><span style="font-size:26px">✨</span><span>Special edition</span></div></div>
+      <div class="car-item"><div class="car-ph"><span style="font-size:26px">🎄</span><span>Grandi lievitati</span></div></div>
+      <div class="car-item"><div class="car-ph"><span style="font-size:26px">📸</span><span>Foto Instagram</span></div></div>
+      <div class="car-item"><div class="car-ph"><span style="font-size:26px">🍞</span><span>Pane fresco</span></div></div>
+      <div class="car-item"><div class="car-ph"><span style="font-size:26px">🔥</span><span>Appena sfornato</span></div></div>
+      <div class="car-item"><div class="car-ph"><span style="font-size:26px">🌾</span><span>Dal laboratorio</span></div></div>
+      <div class="car-item"><div class="car-ph"><span style="font-size:26px">🫙</span><span>Fermentazione</span></div></div>
+      <div class="car-item"><div class="car-ph"><span style="font-size:26px">🥖</span><span>Lievitati</span></div></div>
+      <div class="car-item"><div class="car-ph"><span style="font-size:26px">✨</span><span>Special edition</span></div></div>
+      <div class="car-item"><div class="car-ph"><span style="font-size:26px">🎄</span><span>Grandi lievitati</span></div></div>
     </div>
   </div>
 </section>
 
-<!-- ═══ MANIFESTO ═══ -->
+<!-- MANIFESTO -->
 <section id="manifesto">
   <div class="fi">
-    <span class="lbl inv">Il metodo</span>
-    <h2 class="ttl inv">Artigianale nella<br>sostanza.</h2>
-    <p class="sub inv" style="margin-bottom:32px">
-      Non usiamo quella parola come decorazione. Significa impasti a mano, lievito madre mantenuto ogni giorno, farine selezionate. Sapere perché si fa ogni cosa.
-    </p>
-    <a href="business.html" class="btn btn-red" style="margin-top:8px">Per le attività →</a>
+    <span class="lbl">Il metodo</span>
+    <h2 class="ttl">Artigianale nella<br>sostanza.</h2>
+    <p class="sub" style="margin-bottom:32px">Non usiamo quella parola come decorazione. Significa impasti a mano, lievito madre mantenuto ogni giorno, farine selezionate. Sapere perché si fa ogni cosa.</p>
+    <a href="business.html" class="btn btn-red">Per le attività →</a>
   </div>
-
   <div class="mv-list fi" style="transition-delay:.1s">
     <div class="mv-row">
       <span class="mv-n">01</span>
       <div class="mv-t">
         <h4>Pasta madre viva</h4>
-        <p>Il lievito madre di Vivo Lab viene nutrito e curato ogni giorno. Cambia con le stagioni, dà carattere a ogni impasto. Non si può sostituire.</p>
+        <p>Il lievito madre viene nutrito ogni giorno. Cambia con le stagioni, dà carattere a ogni impasto. Non si può sostituire.</p>
       </div>
     </div>
     <div class="mv-row">
@@ -501,7 +368,7 @@ footer{
       <span class="mv-n">03</span>
       <div class="mv-t">
         <h4>Farine selezionate</h4>
-        <p>Scegliamo mulini e varietà di grano con lo stesso criterio con cui si sceglie un vino buono. Farine diverse raccontano gusti diversi.</p>
+        <p>Scegliamo mulini e varietà di grano con lo stesso criterio con cui si sceglie un vino buono.</p>
       </div>
     </div>
     <div class="mv-row">
@@ -514,7 +381,7 @@ footer{
   </div>
 </section>
 
-<!-- ═══ CHI SIAMO ═══ -->
+<!-- CHI SIAMO -->
 <section id="about">
   <span class="lbl fi">Chi siamo</span>
   <div class="about-grid fi">
@@ -522,7 +389,6 @@ footer{
       <p style="font-size:clamp(18px,2vw,24px);font-weight:500;line-height:1.45;color:var(--sc);margin-bottom:32px;letter-spacing:-.01em;max-width:500px">
         Vivo Lab è un laboratorio di panificazione artigianale fondato da <strong style="color:var(--m)">Simone Spotti</strong> a Gatteo a Mare. Un mestiere scelto, non ereditato.
       </p>
-
       <div class="simone-card">
         <div class="sc-top">
           <div class="sc-av">Si</div>
@@ -531,13 +397,10 @@ footer{
             <span class="sc-role">Fondatore · Maestro Panificatore</span>
           </div>
         </div>
-        <p class="sc-bio">
-          Ha iniziato in cucina, tra le brigata dei ristoranti dell'Emilia-Romagna. A un certo punto ha scoperto il pane — e non è più tornato indietro. Autodidatta, ha girato i forni della regione imparando ogni aspetto della fermentazione avanzata. A 25 anni ha vinto la prima competizione romagnola della piada dei morti con un impasto a lievitazione mista e glassa al vin brulé. Il Gambero Rosso lo ha notato. Ora ha il suo laboratorio.
-        </p>
+        <p class="sc-bio">Ha iniziato in cucina tra le brigate dei ristoranti dell'Emilia-Romagna. A un certo punto ha scoperto il pane — e non è più tornato indietro. Autodidatta, ha girato i forni della regione imparando ogni aspetto della fermentazione avanzata. A 25 anni ha vinto la prima competizione romagnola della piada dei morti con un impasto a lievitazione mista e glassa al vin brulé. Il Gambero Rosso lo ha notato. Ora ha il suo laboratorio.</p>
         <a href="https://instagram.com/mi_chiamo_simone_" target="_blank" rel="noopener" class="sc-link">@mi_chiamo_simone_ ↗</a>
       </div>
     </div>
-
     <div style="display:flex;flex-direction:column;gap:16px">
       <div class="press-card">
         <span class="press-lbl">Stampa</span>
@@ -550,29 +413,22 @@ footer{
             <p>San Leo (RN) · Categoria Professionisti · 2025</p>
           </div>
         </div>
-
       </div>
-
       <div class="b2b-teaser">
         <h3>Hai un'attività?<br>Parliamo di pane.</h3>
-        <p>Ristoranti, bar, strutture ricettive. Abbonamenti settimanali, qualità costante, rapporto diretto con chi produce.</p>
-        <a href="business.html" class="btn btn-red">Scopri i piani →</a>
+        <p>Ristoranti, bar, strutture ricettive. Qualità artigianale, consegne strutturate, un network esclusivo.</p>
+        <a href="business.html" class="btn btn-cream">Scopri i piani →</a>
       </div>
     </div>
   </div>
 </section>
 
-
-
-
-<!-- ═══ FOOTER ═══ -->
+<!-- FOOTER -->
 <footer>
   <div class="ft-grid">
     <div>
-      <div class="ft-brand">
-        <img src="vivolab_logo_white.png" alt="Vivo Lab">
-      </div>
-      <p class="ft-tagline">Artigianale nella sostanza.<br>Preciso nel processo.</p>
+      <div><img src="vivolab_logo_white.png" alt="Vivo Lab" style="height:36px;width:auto;margin-bottom:10px"></div>
+      <p class="ft-tagline">Artigianale nella sostanza.<br>Precisione nel processo.</p>
     </div>
     <div class="ft-col">
       <p class="ft-col-lbl">Laboratorio</p>
@@ -593,19 +449,14 @@ footer{
 </footer>
 
 <script>
-// Nav: diventa solid dopo 40px di scroll
 const nav = document.getElementById('nav');
 window.addEventListener('scroll', () => {
   nav.classList.toggle('solid', window.scrollY > 40);
 }, { passive: true });
-
-// Fade in on scroll
 const io = new IntersectionObserver(entries => {
   entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('on'); });
 }, { threshold: 0.07, rootMargin: '0px 0px -20px 0px' });
 document.querySelectorAll('.fi').forEach(el => io.observe(el));
-
-// Hero: anima subito al caricamento
 window.addEventListener('DOMContentLoaded', () => {
   document.querySelectorAll('#hero .fi').forEach((el, i) => {
     el.style.transitionDelay = i * 0.1 + 's';
