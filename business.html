@@ -30,7 +30,7 @@ nav{
   backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);
   border-bottom:1px solid rgba(44,31,20,.08);
 }
-.nav-logo img{height:28px;width:auto;filter:brightness(0);opacity:.85}
+.nav-logo img{height:36px;width:auto;}
 .nav-r{display:flex;align-items:center;gap:8px}
 .nav-back{
   font-size:14px;font-weight:600;color:var(--mu);text-decoration:none;
@@ -73,6 +73,16 @@ nav{
 .sub{font-size:17px;line-height:1.72;color:var(--mu);max-width:560px}
 .sub.inv{color:rgba(245,240,232,.82)}
 
+
+.plan-hint{
+  display:inline-block;
+  font-size:10px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;
+  padding:3px 10px;border-radius:999px;margin-left:8px;vertical-align:middle;
+}
+.plan-hint.max{background:rgba(44,31,20,.35);color:var(--cr)}
+.plan-hint.pro{background:rgba(180,78,78,.3);color:#f0c4c4}
+.plan-hint.free{background:rgba(255,255,255,.12);color:rgba(245,240,232,.6)}
+
 /* ═══ HERO ═══ */
 #hero{
   background:var(--sc);
@@ -101,12 +111,8 @@ nav{
   padding:24px 28px;border:1px solid rgba(255,255,255,.1);
   display:flex;align-items:flex-start;gap:20px;
 }
-.stat-num{
-  font-size:36px;font-weight:800;letter-spacing:-.04em;
-  color:var(--m);line-height:1;min-width:64px;flex-shrink:0;
-}
-.stat-desc strong{display:block;color:var(--cr);font-weight:700;margin-bottom:3px;font-size:16px}
-.stat-desc p{font-size:14px;line-height:1.55;color:rgba(245,240,232,.75)}
+.stat-desc strong{display:block;color:var(--cr);font-weight:700;margin-bottom:6px;font-size:17px;letter-spacing:-.02em}
+.stat-desc p{font-size:14px;line-height:1.6;color:rgba(245,240,232,.78)}
 
 /* ═══ NETWORK — il cuore della proposta ═══ */
 #network{background:var(--m);padding:100px 56px}
@@ -182,7 +188,7 @@ nav{
 .bun-spec-row:first-child{border-top:1px solid rgba(255,255,255,.1)}
 .bun-ico{
   width:36px;height:36px;border-radius:var(--rl);flex-shrink:0;
-  background:rgba(255,255,255,.08);
+  background:var(--m);
   display:flex;align-items:center;justify-content:center;font-size:16px;
 }
 .bun-spec-txt h4{font-size:15px;font-weight:700;color:var(--cr);margin-bottom:4px}
@@ -336,24 +342,21 @@ footer{background:var(--m);padding:72px 56px 40px}
 
   <div class="stat-grid fi" style="transition-delay:.12s">
     <div class="stat-card">
-      <div class="stat-num">✦</div>
       <div class="stat-desc">
-        <strong>Accesso esclusivo</strong>
-        <p>Non lavoriamo con tutti. Selezioniamo i partner in base al progetto e alla visione.</p>
+        <strong>Non compri solo il pane</strong>
+        <p>Entri in un network di aziende selezionate. Accesso a progetti, partner e opportunità che non trovi fuori.</p>
       </div>
     </div>
     <div class="stat-card">
-      <div class="stat-num">–15%</div>
       <div class="stat-desc">
-        <strong>Sul prezzo di listino</strong>
-        <p>Piano Max annuale. Lo sconto che ti ripaga il canone dal primo ordine.</p>
+        <strong>Vivo Lab non è un fornitore</strong>
+        <p>È un laboratorio che sceglie con chi lavorare. Il rapporto è diretto, continuativo, basato sulla qualità del progetto.</p>
       </div>
     </div>
     <div class="stat-card">
-      <div class="stat-num">1</div>
       <div class="stat-desc">
-        <strong>Interlocutore diretto</strong>
-        <p>Simone. Non un account manager. Chi impasta, risponde.</p>
+        <strong>Ricette che restano tue</strong>
+        <p>I prodotti sviluppati insieme a Simone sono esclusivi. Non li usiamo per nessun altro.</p>
       </div>
     </div>
   </div>
@@ -377,28 +380,28 @@ footer{background:var(--m);padding:72px 56px 40px}
       <div class="nf-row">
         <div class="nf-ico">🎯</div>
         <div class="nf-txt">
-          <h4>Ricette sviluppate su misura</h4>
-          <p>Il bun per il tuo hamburger, il pane che si abbina al tuo menu, la brioche con il tuo profilo aromatico. Niente di standard.</p>
+          <h4>Ricette sviluppate su misura <span class="plan-hint max">Solo Max</span></h4>
+          <p>Il bun per il tuo hamburger, il pane che si abbina al tuo menu. Ricette esclusive — non le usiamo per nessun altro.</p>
         </div>
       </div>
       <div class="nf-row">
         <div class="nf-ico">💡</div>
         <div class="nf-txt">
-          <h4>Consulenza sul prodotto</h4>
-          <p>Check-in periodici con Simone per ottimizzare l'offerta, testare nuovi prodotti, capire cosa funziona e cosa no.</p>
+          <h4>Consulenza e check-in periodici <span class="plan-hint pro">Pro e Max</span></h4>
+          <p>Incontri diretti con Simone per ottimizzare l'offerta, testare nuovi prodotti, capire cosa funziona.</p>
         </div>
       </div>
       <div class="nf-row">
         <div class="nf-ico">🤝</div>
         <div class="nf-txt">
-          <h4>Accesso a progetti e aziende innovative</h4>
-          <p>Fai parte di un network di professionisti del food. Collaborazioni, visibilità, opportunità che non trovi fuori.</p>
+          <h4>Network di aziende innovative del food <span class="plan-hint pro">Pro e Max</span></h4>
+          <p>Community, webinar, eventi premium e fiere. Consulenze su macchinari, AI, innovazione e marketing.</p>
         </div>
       </div>
       <div class="nf-row">
         <div class="nf-ico">📦</div>
         <div class="nf-txt">
-          <h4>Fornitura strutturata e garantita</h4>
+          <h4>Fornitura strutturata e garantita <span class="plan-hint free">Tutti i piani</span></h4>
           <p>Ordini fissi, consegne concordate, qualità costante. Il pane arriva. Sempre.</p>
         </div>
       </div>

@@ -41,13 +41,12 @@ nav.solid{
   display:flex;align-items:center;text-decoration:none;
 }
 .nav-logo img{
-  height:28px;
+  height:36px;
   width:auto;
-  filter:brightness(0) invert(1);
-  transition:filter .3s;
+  transition:opacity .3s;
 }
 nav.solid .nav-logo img{
-  filter:brightness(0);
+  opacity:1;
 }
 .nav-links{display:flex;gap:4px;list-style:none;align-items:center}
 .nav-links a{
@@ -339,8 +338,7 @@ footer{
 @media(max-width:768px){.ft-grid{grid-template-columns:1fr;gap:28px}}
 
 .ft-brand img{
-  height:28px;width:auto;
-  filter:brightness(0) invert(1);
+  height:40px;width:auto;
   margin-bottom:10px;
 }
 .ft-tagline{font-size:14px;color:rgba(255,255,255,.75);font-style:italic;line-height:1.55}
