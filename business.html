@@ -120,6 +120,7 @@ nav{
 .off-card{background:var(--wh);border-radius:var(--rx);padding:36px 30px;display:flex;flex-direction:column;gap:10px;border:1px solid var(--fa);transition:transform .2s,box-shadow .2s}
 .off-card:hover{transform:translateY(-4px);box-shadow:0 16px 48px rgba(44,31,20,.08)}
 .off-num{font-size:28px;font-weight:800;color:var(--mp);letter-spacing:-.04em;line-height:1;margin-bottom:4px}
+.off-card-head{display:flex;align-items:flex-start;justify-content:space-between;gap:12px;margin-bottom:8px}
 .off-name{font-size:19px;font-weight:800;letter-spacing:-.03em;color:var(--sc)}
 .off-desc{font-size:14px;line-height:1.68;color:var(--mu);flex:1}
 .off-tag{display:inline-block;background:var(--cr);color:var(--t);font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;padding:4px 12px;border-radius:var(--rp);width:fit-content}
@@ -240,14 +241,12 @@ footer{background:var(--fa);padding:72px 56px 40px;border-top:1px solid rgba(152
       <p>Qualità di laboratorio, consegne garantite, ordini fissi. Senza compromessi su nessuno dei due fronti.</p>
     </div>
     <div class="stat-card">
-      <strong>Ricette che restano tue</strong>
+      <div style="display:flex;align-items:center;justify-content:space-between;gap:8px;margin-bottom:6px"><strong>Ricette che restano tue</strong><span class="ph ph-max">Solo Max</span></div>
       <p>I prodotti sviluppati insieme a Simone sono esclusivi. Non li usiamo per nessun altro.</p>
-      <span class="ph ph-max" style="margin-top:8px;display:inline-block">Solo Max</span>
     </div>
     <div class="stat-card">
-      <strong>Accesso a un network esclusivo</strong>
+      <div style="display:flex;align-items:center;justify-content:space-between;gap:8px;margin-bottom:6px"><strong>Accesso a un network esclusivo</strong><span class="ph ph-pro">Pro e Max</span></div>
       <p>Entri in un ecosistema di aziende innovative del food — progetti, eventi, consulenze, opportunità.</p>
-      <span class="ph ph-pro" style="margin-top:8px;display:inline-block">Pro e Max</span>
     </div>
   </div>
 </section>
@@ -265,28 +264,28 @@ footer{background:var(--fa);padding:72px 56px 40px;border-top:1px solid rgba(152
       <div class="nf-row">
         <div class="nf-ico">🎯</div>
         <div class="nf-txt">
-          <h4>Ricette sviluppate su misura</h4><span class="ph ph-max" style="display:inline-block;margin-top:4px;margin-bottom:6px">Solo Max</span>
+          <div style="display:flex;align-items:center;justify-content:space-between;gap:8px;margin-bottom:6px"><h4 style="margin:0">Ricette sviluppate su misura</h4><span class="ph ph-max">Solo Max</span></div>
           <p>Il bun per il tuo hamburger, il pane per il tuo menu. Ricetta esclusiva, non la usiamo per altri.</p>
         </div>
       </div>
       <div class="nf-row">
         <div class="nf-ico">💡</div>
         <div class="nf-txt">
-          <h4>Consulenza diretta con Simone</h4><span class="ph ph-pro" style="display:inline-block;margin-top:4px;margin-bottom:6px">Pro e Max</span>
+          <div style="display:flex;align-items:center;justify-content:space-between;gap:8px;margin-bottom:6px"><h4 style="margin:0">Consulenza diretta con Simone</h4><span class="ph ph-pro">Pro e Max</span></div>
           <p>Check-in periodici per ottimizzare l'offerta, testare nuovi prodotti, capire cosa funziona.</p>
         </div>
       </div>
       <div class="nf-row">
         <div class="nf-ico">🤝</div>
         <div class="nf-txt">
-          <h4>Network di aziende innovative del food</h4><span class="ph ph-pro" style="display:inline-block;margin-top:4px;margin-bottom:6px">Pro e Max</span>
+          <div style="display:flex;align-items:center;justify-content:space-between;gap:8px;margin-bottom:6px"><h4 style="margin:0">Network di aziende innovative del food</h4><span class="ph ph-pro">Pro e Max</span></div>
           <p>Community, webinar, eventi premium, fiere. .</p>
         </div>
       </div>
       <div class="nf-row">
         <div class="nf-ico">📦</div>
         <div class="nf-txt">
-          <h4>Fornitura strutturata e garantita</h4><span class="ph ph-all" style="display:inline-block;margin-top:4px;margin-bottom:6px">Tutti i piani</span>
+          <div style="display:flex;align-items:center;justify-content:space-between;gap:8px;margin-bottom:6px"><h4 style="margin:0">Fornitura strutturata e garantita</h4><span class="ph ph-all">Tutti i piani</span></div>
           <p>Ordini fissi, consegne concordate, qualità costante ogni settimana.</p>
         </div>
       </div>
@@ -301,18 +300,16 @@ footer{background:var(--fa);padding:72px 56px 40px;border-top:1px solid rgba(152
   <p class="sub fi">Stesso metodo su ogni prodotto: pasta madre, farine selezionate, fermentazione lenta.</p>
   <div class="prodotti-grid fi" style="margin-top:52px">
     <div class="off-card">
-      <p class="off-name">Pane da tavola</p>
+      <div class="off-card-head"><p class="off-name">Pane da tavola</p></div>
       <p class="off-desc">Pagnotte e filoni a lunga fermentazione. Crosta consistente, mollica alveolata. Il pane che il cliente ricorda.</p>
     </div>
     <div class="off-card">
-      <p class="off-name">Brioche &amp; colazione</p>
-      <p class="off-desc">Frolle, cornetti al burro, brioche. Per chi non vuole compromessi a colazione.</p>
-      <span class="ph ph-pro" style="display:inline-block;margin-top:8px">Pro e Max</span>
+      <div class="off-card-head"><p class="off-name">Brioche &amp; colazione</p><span class="ph ph-pro">Pro e Max</span></div>
+      <p class="off-desc">Frolle, cornetti al burro, brioche. Per chi non vuole compromessi a colazione. Fino a 25 pz/giorno.</p>
     </div>
     <div class="off-card">
-      <p class="off-name">Bun per hamburger</p>
+      <div class="off-card-head"><p class="off-name">Bun per hamburger</p><span class="ph ph-max">Solo Max</span></div>
       <p class="off-desc">Soffici, strutturati, con mollica che regge. Sviluppati su misura per il tuo prodotto. Ricetta tua, esclusiva.</p>
-      <span class="ph ph-max" style="display:inline-block;margin-top:8px">Solo Max</span>
     </div>
   </div>
 </section>
