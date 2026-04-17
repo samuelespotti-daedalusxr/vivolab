@@ -58,6 +58,21 @@ nav{
 .sub{font-size:17px;line-height:1.72;color:var(--mu);max-width:560px}
 .sub.on-m{color:rgba(245,240,232,.88)}
 
+/* feat-highlight */
+.plan-feats li.feat-highlight{
+  color:var(--sc);
+  font-weight:700;
+  padding-left:12px;
+  border-left:3px solid var(--m);
+  margin-left:-12px;
+}
+.plan.feat .plan-feats li.feat-highlight{
+  color:var(--cr);
+  font-weight:700;
+  padding-left:12px;
+  border-left:3px solid rgba(245,240,232,.8);
+  margin-left:-12px;
+}
 /* plan-hint badges */
 .ph{display:inline-block;font-size:10px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;padding:3px 10px;border-radius:var(--rp);margin-left:8px;vertical-align:middle}
 .ph-max{background:var(--md);color:var(--cr)}
@@ -182,18 +197,18 @@ nav{
 .cf-note{font-size:13px;color:rgba(245,240,232,.6);font-style:italic}
 
 /* FOOTER */
-footer{background:var(--m);padding:72px 56px 40px}
+footer{background:var(--fa);padding:72px 56px 40px;border-top:1px solid rgba(152,96,64,.2)}
 @media(max-width:640px){footer{padding:56px 20px 32px}}
-.ft-grid{display:grid;grid-template-columns:1.6fr 1fr 1fr;gap:40px;padding-bottom:48px;border-bottom:1px solid rgba(255,255,255,.2);margin-bottom:32px}
+.ft-grid{display:grid;grid-template-columns:1.6fr 1fr 1fr;gap:40px;padding-bottom:48px;border-bottom:1px solid rgba(152,96,64,.15);margin-bottom:32px}
 @media(max-width:768px){.ft-grid{grid-template-columns:1fr;gap:28px}}
 .ft-brand img{height:36px;width:auto;margin-bottom:10px}
-.ft-tagline{font-size:14px;color:rgba(245,240,232,.75);font-style:italic;line-height:1.55}
-.ft-col-lbl{font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:rgba(245,240,232,.6);margin-bottom:14px}
-.ft-col a,.ft-col p{font-size:15px;font-weight:500;line-height:1.9;color:rgba(245,240,232,.9);text-decoration:none;display:block}
-.ft-col a:hover{color:var(--cr)}
-.ft-cta{margin-top:14px;display:inline-flex;align-items:center;background:var(--cr);color:var(--sc);padding:10px 22px;border-radius:var(--rp);font-size:14px;font-weight:700;text-decoration:none;transition:background .15s}
-.ft-cta:hover{background:var(--wh)}
-.ft-bottom{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;font-size:13px;color:rgba(245,240,232,.5)}
+.ft-tagline{font-size:14px;color:var(--mu);font-style:italic;line-height:1.55}
+.ft-col-lbl{font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--t);margin-bottom:14px}
+.ft-col a,.ft-col p{font-size:15px;font-weight:500;line-height:1.9;color:var(--sc);text-decoration:none;display:block}
+.ft-col a:hover{color:var(--m)}
+.ft-cta{margin-top:14px;display:inline-flex;align-items:center;background:var(--m);color:var(--cr);padding:10px 22px;border-radius:var(--rp);font-size:14px;font-weight:700;text-decoration:none;transition:background .15s}
+.ft-cta:hover{background:var(--md)}
+.ft-bottom{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;font-size:13px;color:var(--mu)}
 </style>
 </head>
 <body>
@@ -393,12 +408,12 @@ footer{background:var(--m);padding:72px 56px 40px}
       <p class="plan-note">/mese · piano annuale</p>
       <div class="plan-sep"></div>
       <ul class="plan-feats">
+        <li class="feat-highlight">Catalogo esteso con prodotti custom</li>
+        <li class="feat-highlight">Check-in mensile con Simone</li>
         <li>–8% su tutta la produzione</li>
         <li>1 consegna gratuita a settimana</li>
-        <li><strong>Catalogo esteso + prodotti custom</strong> — pane hot dog, formati speciali</li>
-        <li><strong>Check-in mensile con Simone</strong></li>
         <li>Brioche fino a 15 pz/giorno</li>
-        <li>Community chat, webinar, eventi premium e fiere innovative</li>
+        <li>Community, webinar ed eventi premium del network</li>
       </ul>
       <a href="mailto:info@vivolab.it?subject=Piano Pro" class="plan-cta">Scrivici</a>
     </div>
@@ -408,12 +423,12 @@ footer{background:var(--m);padding:72px 56px 40px}
       <p class="plan-note">/mese · piano annuale</p>
       <div class="plan-sep"></div>
       <ul class="plan-feats">
+        <li class="feat-highlight">Ricetta custom esclusiva sviluppata con Simone — solo tua</li>
+        <li class="feat-highlight">2 check-in mensili con Simone</li>
         <li>–15% su tutta la produzione</li>
         <li>2 consegne gratuite a settimana</li>
-        <li><strong>2 check-in mensili con Simone</strong></li>
         <li>Brioche fino a 25 pz/giorno</li>
-        <li><strong>Ricetta custom esclusiva sviluppata insieme a Simone — solo tua, non la usiamo per nessun altro</strong></li>
-        <li>Catalogo esteso + prodotti custom</li>
+        <li>Catalogo esteso con prodotti custom</li>
         <li>Community, webinar ed eventi premium del network</li>
         <li>Accesso prioritario a progetti e partner food</li>
       </ul>
@@ -439,7 +454,7 @@ footer{background:var(--m);padding:72px 56px 40px}
 <footer>
   <div class="ft-grid">
     <div>
-      <div><img src="vivolab_logo_white.png" alt="Vivo Lab" style="height:36px;width:auto;margin-bottom:10px"></div>
+      <div><img src="vivolab_logo_dark.png" alt="Vivo Lab" style="height:36px;width:auto;margin-bottom:10px"></div>
       <p class="ft-tagline">Artigianale nella sostanza.<br>Precisione nel processo.</p>
     </div>
     <div class="ft-col">
