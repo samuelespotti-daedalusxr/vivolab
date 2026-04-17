@@ -45,7 +45,7 @@ nav.solid{
   border-bottom-color:rgba(44,31,20,.08);
 }
 .nav-logo img{height:32px;width:auto;}
-nav.solid .nav-logo img{filter:brightness(0);}
+
 .nav-links{display:flex;gap:4px;list-style:none;align-items:center}
 .nav-links a{
   font-size:14px;font-weight:600;color:rgba(245,240,232,.95);
@@ -253,8 +253,9 @@ footer{background:var(--m);padding:72px 56px 40px}
 
 <!-- NAV -->
 <nav id="nav">
-  <a href="index.html" style="display:flex;align-items:center;text-decoration:none">
-    <img src="vivolab_logo_white.png" alt="Vivo Lab" style="height:32px;width:auto">
+  <a href="index.html" id="nav-logo-link" style="display:flex;align-items:center;text-decoration:none">
+    <img id="logo-white" src="vivolab_logo_white.png" alt="Vivo Lab" style="height:32px;width:auto;display:block">
+    <img id="logo-dark" src="vivolab_logo_dark.png" alt="Vivo Lab" style="height:32px;width:auto;display:none">
   </a>
   <ul class="nav-links">
     <li><a href="#prodotti">Il pane</a></li>
@@ -442,8 +443,15 @@ footer{background:var(--m);padding:72px 56px 40px}
 
 <script>
 const nav = document.getElementById('nav');
+const logoWhite = document.getElementById('logo-white');
+const logoDark = document.getElementById('logo-dark');
 window.addEventListener('scroll', () => {
-  nav.classList.toggle('solid', window.scrollY > 40);
+  const solid = window.scrollY > 40;
+  nav.classList.toggle('solid', solid);
+  if (logoWhite && logoDark) {
+    logoWhite.style.display = solid ? 'none' : 'block';
+    logoDark.style.display = solid ? 'block' : 'none';
+  }
 }, { passive: true });
 const io = new IntersectionObserver(entries => {
   entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('on'); });
