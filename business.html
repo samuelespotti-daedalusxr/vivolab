@@ -62,7 +62,7 @@ nav{
 .ph{display:inline-block;font-size:10px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;padding:3px 10px;border-radius:var(--rp);margin-left:8px;vertical-align:middle}
 .ph-max{background:var(--sc);color:var(--cr)}
 .ph-pro{background:var(--m);color:var(--cr)}
-.ph-all{background:var(--fa);color:var(--mu)}
+.ph-all{background:var(--fa);color:var(--mu);border:1.5px solid rgba(92,64,48,.3)}
 
 /* ═══ HERO — sfondo mattone ═══ */
 #hero{background:var(--m);padding:120px 56px 96px;display:grid;grid-template-columns:1fr 1fr;gap:72px;align-items:center;min-height:85vh}
@@ -225,7 +225,7 @@ footer{background:var(--m);padding:72px 56px 40px}
       <p>Qualità di laboratorio, consegne garantite, ordini fissi. Senza compromessi su nessuno dei due fronti.</p>
     </div>
     <div class="stat-card">
-      <strong>Ricette che restano tue</strong>
+      <strong>Ricette che restano tue <span class="ph ph-max" style="font-size:11px;vertical-align:middle">Solo Max</span></strong>
       <p>I prodotti sviluppati insieme a Simone sono esclusivi. Non li usiamo per nessun altro.</p>
     </div>
     <div class="stat-card">
@@ -263,7 +263,7 @@ footer{background:var(--m);padding:72px 56px 40px}
         <div class="nf-ico">🤝</div>
         <div class="nf-txt">
           <h4>Network di aziende innovative del food <span class="ph ph-pro">Pro e Max</span></h4>
-          <p>Community, webinar, eventi premium, fiere. Consulenze su AI, macchinari, marketing e innovazione.</p>
+          <p>Community, webinar, eventi premium, fiere. .</p>
         </div>
       </div>
       <div class="nf-row">
@@ -284,22 +284,16 @@ footer{background:var(--m);padding:72px 56px 40px}
   <p class="sub fi">Stesso metodo su ogni prodotto: pasta madre, farine selezionate, fermentazione lenta.</p>
   <div class="prodotti-grid fi" style="margin-top:52px">
     <div class="off-card">
-      <p class="off-num">01</p>
       <p class="off-name">Pane da tavola</p>
       <p class="off-desc">Pagnotte e filoni a lunga fermentazione. Crosta consistente, mollica alveolata. Il pane che il cliente ricorda.</p>
-      <span class="off-tag">Consegna settimanale</span>
     </div>
     <div class="off-card">
-      <p class="off-num">02</p>
       <p class="off-name">Brioche &amp; colazione</p>
       <p class="off-desc">Frolle, cornetti al burro, brioche. Per chi non vuole compromessi a colazione. Fino a 25 pz/giorno con Pro e Max.</p>
-      <span class="off-tag">Colazione</span>
     </div>
     <div class="off-card">
-      <p class="off-num">03</p>
       <p class="off-name">Bun per hamburger</p>
       <p class="off-desc">Soffici, strutturati, con mollica che regge. Sviluppati su misura per il tuo prodotto. Ricetta tua, esclusiva.</p>
-      <span class="off-tag">Ricetta personalizzata</span>
     </div>
   </div>
 </section>
@@ -350,23 +344,23 @@ footer{background:var(--m);padding:72px 56px 40px}
       <div class="bun-dc">
         <div class="bun-dc-head">
           <p class="bun-dc-title">Bun classico</p>
-          <span class="bun-dc-pill">Standard</span>
+          <span class="bun-dc-pill">Piano Basic</span>
         </div>
         <p class="bun-dc-body">Ø 10 cm, peso 80–90g. Superficie liscia o con semi. Funziona per il 90% degli hamburger. Pronto in una settimana.</p>
       </div>
       <div class="bun-dc">
         <div class="bun-dc-head">
-          <p class="bun-dc-title">Bun gourmet</p>
-          <span class="bun-dc-pill">Su misura</span>
+          <p class="bun-dc-title">Bun integrale</p>
+          <span class="bun-dc-pill">Pro e Max</span>
         </div>
-        <p class="bun-dc-body">Dimensioni, grammatura, tipo di farina, finitura — tutto adattato al tuo hamburger. Prevede un test in laboratorio. Ricetta esclusiva.</p>
+        <p class="bun-dc-body">Farine miste, sapore più caratteristico. Per chi vuole un'alternativa nel menu che si distingua davvero.</p>
       </div>
       <div class="bun-dc">
         <div class="bun-dc-head">
-          <p class="bun-dc-title">Bun integrale</p>
-          <span class="bun-dc-pill">Alternativo</span>
+          <p class="bun-dc-title">Bun gourmet</p>
+          <span class="bun-dc-pill">Solo Max</span>
         </div>
-        <p class="bun-dc-body">Farine miste, sapore più caratteristico. Per chi vuole un'alternativa nel menu che si distingua davvero.</p>
+        <p class="bun-dc-body">Dimensioni, grammatura, tipo di farina, finitura — tutto adattato al tuo hamburger specifico. Prevede un test in laboratorio. Ricetta esclusiva.</p>
       </div>
     </div>
   </div>
@@ -379,7 +373,7 @@ footer{background:var(--m);padding:72px 56px 40px}
   <p class="pricing-intro fi">La fee mensile non è per il pane. È per entrare in un rapporto esclusivo con Vivo Lab. Pane, consulenze, ricette su misura e network sono inclusi in base al piano scelto.</p>
   <div class="pricing-grid fi">
     <div class="plan">
-      <p class="plan-tier">Free</p>
+      <p class="plan-tier">Basic</p>
       <p class="plan-price">€0</p>
       <p class="plan-note">per testare il prodotto</p>
       <div class="plan-sep"></div>
@@ -388,22 +382,23 @@ footer{background:var(--m);padding:72px 56px 40px}
         <li>Ordini spot senza vincoli</li>
         <li>Nessun abbonamento</li>
       </ul>
-      <a href="mailto:info@vivolab.it?subject=Piano Free" class="plan-cta">Scrivici</a>
+      <a href="mailto:info@vivolab.it?subject=Piano Basic" class="plan-cta">Scrivici</a>
     </div>
     <div class="plan feat">
-      <span class="plan-badge">Più scelto</span>
-      <p class="plan-tier">Pro</p>
+      <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:20px">
+        <p class="plan-tier" style="margin-bottom:0">Pro</p>
+        <span class="plan-badge" style="margin-bottom:0">Più scelto</span>
+      </div>
       <p class="plan-price">€179</p>
       <p class="plan-note">/mese · piano annuale</p>
       <div class="plan-sep"></div>
       <ul class="plan-feats">
         <li>–8% su tutta la produzione</li>
         <li>1 consegna gratuita a settimana</li>
-        <li>Catalogo esteso + prodotti custom (pane hot dog, formati speciali)</li>
-        <li>Check-in mensile con Simone</li>
+        <li><strong style="color:var(--cr)">Catalogo esteso + prodotti custom</strong> — pane hot dog, formati speciali</li>
+        <li><strong style="color:var(--cr)">Check-in mensile con Simone</strong></li>
         <li>Brioche fino a 15 pz/giorno</li>
         <li>Community chat, webinar, eventi premium e fiere innovative</li>
-        <li>Consulenze su AI, macchinari, marketing e innovazione</li>
       </ul>
       <a href="mailto:info@vivolab.it?subject=Piano Pro" class="plan-cta">Scrivici</a>
     </div>
@@ -415,11 +410,12 @@ footer{background:var(--m);padding:72px 56px 40px}
       <ul class="plan-feats">
         <li>–15% su tutta la produzione</li>
         <li>2 consegne gratuite a settimana</li>
-        <li>2 check-in mensili con Simone</li>
+        <li><strong style="color:var(--cr)">2 check-in mensili con Simone</strong></li>
         <li>Brioche fino a 25 pz/giorno</li>
-        <li>Ricetta custom esclusiva sviluppata insieme a Simone — solo tua</li>
+        <li><strong style="color:var(--cr)">Ricetta custom esclusiva sviluppata insieme a Simone — solo tua, non la usiamo per nessun altro</strong></li>
+        <li>Catalogo esteso + prodotti custom</li>
+        <li>Community, webinar ed eventi premium del network</li>
         <li>Accesso prioritario a progetti e partner food</li>
-        <li>Tutto il Pro incluso</li>
       </ul>
       <a href="mailto:info@vivolab.it?subject=Piano Max" class="plan-cta">Scrivici</a>
     </div>
