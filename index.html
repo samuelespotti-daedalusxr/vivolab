@@ -68,7 +68,7 @@ nav.solid .nav-b2b{background:var(--sc)!important;color:var(--cr)!important}
 .sub{font-size:17px;line-height:1.72;color:var(--mu);max-width:540px}
 
 /* ── HERO ── */
-/* ── HERO desktop: 2 colonne, video a destra ── */
+/* ── HERO ── */
 #hero{
   display:grid;grid-template-columns:1fr 1fr;
   min-height:100vh;
@@ -88,46 +88,48 @@ nav.solid .nav-b2b{background:var(--sc)!important;color:var(--cr)!important}
   pointer-events:none;
 }
 
-/* colori testo su sfondo rosso desktop */
 .hero-pill{display:inline-flex;background:rgba(255,255,255,.18);color:var(--cr);font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;padding:7px 18px;border-radius:var(--rp);margin-bottom:28px;width:fit-content}
 .hero-title{font-size:clamp(52px,6.5vw,88px);font-weight:800;line-height:.93;letter-spacing:-.04em;color:var(--cr);margin-bottom:24px}
 .hero-body{font-size:clamp(15px,1.5vw,17px);line-height:1.72;color:rgba(245,240,232,.9);max-width:420px;margin-bottom:10px}
 .hero-tagline{font-size:15px;font-style:italic;font-weight:500;color:rgba(245,240,232,.65);margin-bottom:36px}
 .hero-ctas{display:flex;gap:12px;flex-wrap:wrap}
 
-/* ── HERO mobile: video in alto come immagine, testo sotto su crema ── */
+/* mobile video block separato, mostrato solo su mobile */
+.hero-video-mobile{display:none}
+
 @media(max-width:860px){
+  /* hero diventa solo testo su crema */
   #hero{
     grid-template-columns:1fr;
-    grid-template-rows:auto auto;
     min-height:auto;
     background:var(--cr);
   }
-  /* video prima (row 1) */
-  .hero-r{
-    order:-1;           /* sale sopra .hero-l */
-    position:relative;
-    width:100%;
-    height:56vw;        /* altezza fissa proporzionale */
-    overflow:hidden;
-  }
-  .hero-r video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block}
-  .hero-r::before{display:none}
-  /* testo sotto (row 2) su sfondo crema */
+  .hero-r{display:none} /* nascondo il video desktop */
   .hero-l{
-    order:1;
-    background:var(--cr);
     padding:40px 24px 56px;
+    background:var(--cr);
   }
   .hero-pill{background:var(--mp);color:var(--md)}
-  .hero-title{color:var(--sc);font-size:clamp(40px,12vw,72px)}
+  .hero-title{color:var(--sc);font-size:clamp(44px,13vw,68px)}
   .hero-body{color:var(--mu)}
   .hero-tagline{color:var(--t)}
-  .btn-ghost{background:transparent;color:var(--sc);box-shadow:inset 0 0 0 2px var(--fa)}
+  .btn-ghost{background:transparent;color:var(--sc);box-shadow:inset 0 0 0 2px rgba(152,96,64,.25)}
   .btn-ghost:hover{background:var(--fa)}
   .btn-cream{background:var(--m);color:#fff}
-}
 
+  /* blocco video mobile: elemento HTML separato, PRIMA di #hero nel DOM */
+  .hero-video-mobile{
+    display:block;
+    width:100%;
+    height:56vw;
+    overflow:hidden;
+    background:var(--sc);
+  }
+  .hero-video-mobile video{
+    width:100%;height:100%;
+    object-fit:cover;display:block;
+  }
+}
 /* ── PRODOTTI ── */
 #prodotti{background:var(--cr);padding:100px 56px}
 @media(max-width:700px){#prodotti{padding:72px 20px}}
@@ -156,89 +158,66 @@ nav.solid .nav-b2b{background:var(--sc)!important;color:var(--cr)!important}
 @media(max-width:700px){#produzione{padding:72px 20px}}
 .prod-intro{font-size:17px;line-height:1.72;color:var(--mu);max-width:560px;margin-bottom:48px}
 
-/* ── DESKTOP: tabella ── */
-.prod-table-wrap{overflow-x:auto;-webkit-overflow-scrolling:touch;border-radius:var(--rx);box-shadow:0 4px 24px rgba(44,31,20,.08)}
-.prod-table{width:100%;border-collapse:collapse;background:var(--wh);min-width:720px}
+/* DESKTOP tabella */
+.prod-table-wrap{overflow-x:auto;-webkit-overflow-scrolling:touch;border-radius:var(--rx);box-shadow:0 2px 16px rgba(44,31,20,.07)}
+.prod-table{width:100%;border-collapse:collapse;background:var(--wh);min-width:660px}
 
-/* header: giorno */
-.prod-table thead tr{background:var(--sc)}
 .prod-table thead th{
-  padding:16px 18px;
-  font-size:12px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;
-  color:rgba(245,240,232,.7);text-align:center;border:none;
+  padding:14px 18px;
+  font-size:13px;font-weight:700;
+  background:var(--sc);color:var(--cr);
+  text-align:center;border:none;
+  letter-spacing:.02em;
 }
-.prod-table thead th:first-child{
-  text-align:left;color:rgba(245,240,232,.4);
-  border-radius:var(--rx) 0 0 0;min-width:120px;
-}
-.prod-table thead th:last-child{border-radius:0 var(--rx) 0 0;color:var(--m)}
-/* sabato header evidenziato */
-.prod-table thead th.sab{color:#ffb3a0;font-size:13px}
+.prod-table thead th:first-child{text-align:left;border-radius:var(--rx) 0 0 0;min-width:130px}
+.prod-table thead th:last-child{border-radius:0 var(--rx) 0 0}
 
-/* righe categoria */
 .prod-table tbody tr{border-bottom:1px solid var(--fa)}
-.prod-table tbody tr:last-child{border-bottom:none}
-
+.prod-table tbody tr:hover{background:rgba(245,240,232,.6)}
 .prod-table td{
-  padding:18px 18px;
-  font-size:14px;line-height:1.45;color:var(--sc);
-  vertical-align:top;border:none;
-  border-right:1px solid var(--fa);
+  padding:16px 18px;
+  font-size:14px;font-weight:500;
+  color:var(--sc);
   text-align:center;
+  border-right:1px solid var(--fa);
+  vertical-align:middle;
+  line-height:1.4;
 }
 .prod-table td:last-child{border-right:none}
-
-/* colonna categoria a sinistra */
-.prod-table td.cat{
-  text-align:left;
-  font-size:13px;font-weight:700;
-  color:var(--sc);
+.prod-table td:first-child{
+  text-align:left;font-weight:700;
   background:var(--cr);
   border-right:2px solid var(--fa);
-  min-width:120px;
 }
-.cat-ico{font-size:18px;display:block;margin-bottom:5px}
-.cat-label{display:block;font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--mu)}
-
-/* contenuto cella */
-.prod-main{font-weight:700;color:var(--sc);display:block;font-size:14px}
-.prod-sec{color:var(--mu);font-size:12px;display:block;margin-top:3px}
-.prod-special{
+/* sabato: pill rosso pallido */
+.prod-sab{
   display:inline-block;
   background:var(--mp);color:var(--md);
-  font-size:11px;font-weight:700;
+  font-size:12px;font-weight:700;
   padding:3px 10px;border-radius:var(--rp);
-  margin-top:4px;
+  white-space:nowrap;
+}
+.prod-table thead th:last-child{background:var(--md)}
+
+/* sempre disponibili */
+.prod-table tr.prod-always td{font-size:13px;color:var(--mu);font-style:italic;text-align:left}
+.prod-table tr.prod-always td:first-child{font-style:normal;font-weight:700;color:var(--sc)}
+.prod-table tfoot td{
+  padding:12px 18px;font-size:12px;color:rgba(245,240,232,.7);
+  font-style:italic;background:var(--sc);text-align:left;
+  border-radius:0 0 var(--rx) var(--rx);
 }
 
-/* righe sempre disponibili */
-.prod-always{background:rgba(245,240,232,.5)}
-.prod-always td.cat{background:var(--cr)}
-.prod-always td:not(.cat){
-  font-size:13px;color:var(--mu);font-style:italic;
-  text-align:left;
-}
-
-/* footer */
-.prod-footer{background:var(--sc)}
-.prod-footer td{
-  padding:14px 20px;
-  color:rgba(245,240,232,.65);font-size:12px;font-style:italic;
-  border:none;border-radius:0 0 var(--rx) var(--rx);
-  text-align:left;
-}
-
-/* ── MOBILE: tab per giorno ── */
+/* MOBILE tab */
 .prod-mobile{display:none}
 @media(max-width:700px){
   .prod-table-wrap{display:none}
   .prod-mobile{display:block}
 }
-.prod-tabs{display:flex;gap:6px;overflow-x:auto;padding-bottom:4px;margin-bottom:20px;-webkit-overflow-scrolling:touch;scrollbar-width:none}
-.prod-tabs::-webkit-scrollbar{display:none}
+.prod-tabs{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:16px}
 .prod-tab{
-  flex-shrink:0;font-family:var(--font);font-size:13px;font-weight:700;
-  padding:10px 18px;border-radius:var(--rp);border:none;cursor:pointer;
+  font-family:var(--font);font-size:13px;font-weight:700;
+  padding:9px 16px;border-radius:var(--rp);border:none;cursor:pointer;
   background:var(--wh);color:var(--mu);
   box-shadow:0 1px 4px rgba(44,31,20,.1);
   transition:background .15s,color .15s;
@@ -246,29 +225,29 @@ nav.solid .nav-b2b{background:var(--sc)!important;color:var(--cr)!important}
 .prod-tab.active{background:var(--sc);color:var(--cr)}
 .prod-tab.sab{color:var(--m)}
 .prod-tab.sab.active{background:var(--m);color:#fff}
+
 .prod-panel{display:none}
-.prod-panel.active{display:flex;flex-direction:column;gap:8px}
+.prod-panel.active{display:flex;flex-direction:column;gap:1px;border-radius:var(--rx);overflow:hidden;box-shadow:0 2px 12px rgba(44,31,20,.07)}
+
 .prod-row{
-  background:var(--wh);border-radius:var(--rl);
-  padding:14px 16px;
-  display:flex;align-items:center;gap:14px;
-  box-shadow:0 1px 4px rgba(44,31,20,.07);
+  background:var(--wh);
+  padding:15px 18px;
+  display:flex;justify-content:space-between;align-items:center;gap:12px;
 }
-.prod-row-ico{font-size:22px;flex-shrink:0}
-.prod-row-cat{font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--mu);margin-bottom:3px}
-.prod-row-main{font-size:15px;font-weight:700;color:var(--sc);line-height:1.3}
-.prod-row-sec{font-size:13px;color:var(--mu);margin-top:1px}
+.prod-row:last-of-type{background:var(--cr)}
+.prod-row-cat{font-size:13px;font-weight:700;color:var(--sc);flex:1}
+.prod-row-val{font-size:13px;font-weight:500;color:var(--mu);text-align:right;line-height:1.4}
 .prod-row-special{
   display:inline-block;background:var(--mp);color:var(--md);
-  font-size:11px;font-weight:700;padding:2px 10px;border-radius:var(--rp);margin-top:4px;
+  font-size:11px;font-weight:700;padding:2px 9px;border-radius:var(--rp);
 }
 .prod-always-note{
-  background:var(--cr);border-radius:var(--rl);padding:14px 16px;
+  background:var(--cr);padding:13px 18px;
   font-size:13px;color:var(--mu);
-  box-shadow:0 1px 4px rgba(44,31,20,.06);
+  display:flex;justify-content:space-between;align-items:center;
 }
-.prod-always-note strong{color:var(--sc);font-size:11px;text-transform:uppercase;letter-spacing:.06em;display:block;margin-bottom:4px}
-.prod-note-footer{margin-top:16px;font-size:12px;color:var(--mu);font-style:italic;text-align:center}
+.prod-always-note b{color:var(--sc);font-size:13px}
+.prod-note-footer{margin-top:12px;font-size:12px;color:var(--mu);font-style:italic;text-align:center}
   font-size:13px;color:var(--mu);font-style:italic;
   border:1px solid rgba(152,96,64,.1);
 }
@@ -373,13 +352,20 @@ footer{background:var(--fa);padding:72px 56px 40px;border-top:1px solid rgba(152
 </nav>
 
 <!-- HERO -->
+<!-- VIDEO mobile: blocco separato, visibile solo su mobile -->
+<div class="hero-video-mobile">
+  <video autoplay muted loop playsinline preload="auto">
+    <source src="hero.mp4" type="video/mp4">
+  </video>
+</div>
+
 <section id="hero">
   <div class="hero-l">
-    <span class="hero-pill fi">Gatteo a Mare · Romagna</span>
-    <h1 class="hero-title fi" style="transition-delay:.08s">vivolab</h1>
-    <p class="hero-body fi" style="transition-delay:.16s">Vivo Lab è un laboratorio di panificazione artigianale. Produciamo pane, lievitati e fermentati con la cura di un mestiere antico e la precisione di un processo moderno.</p>
-    <p class="hero-tagline fi" style="transition-delay:.22s">Artigianale nella sostanza. Precisione nel processo.</p>
-    <div class="hero-ctas fi" style="transition-delay:.28s">
+    <span class="hero-pill">Gatteo a Mare · Romagna</span>
+    <h1 class="hero-title">vivolab</h1>
+    <p class="hero-body">Vivo Lab è un laboratorio di panificazione artigianale. Produciamo pane, lievitati e fermentati con la cura di un mestiere antico e la precisione di un processo moderno.</p>
+    <p class="hero-tagline">Artigianale nella sostanza. Precisione nel processo.</p>
+    <div class="hero-ctas">
       <a href="#prodotti" class="btn btn-cream">Scopri il pane</a>
       <a href="business.html" class="btn btn-ghost">Per le attività ↗</a>
     </div>
@@ -439,89 +425,87 @@ footer{background:var(--fa);padding:72px 56px 40px;border-top:1px solid rgba(152
   <h2 class="ttl fi">Produzione settimanale.</h2>
   <p class="prod-intro fi">Ogni giorno un prodotto diverso. Il sabato si aggiunge tutto quello che viene richiesto durante la settimana, più le specialità. Domenica chiuso.</p>
 
-  <!-- DESKTOP: tabella -->
+  <!-- DESKTOP tabella -->
   <div class="prod-table-wrap fi">
     <table class="prod-table">
       <thead>
         <tr>
-          <th style="text-align:left"></th>
+          <th></th>
           <th>Lunedì</th><th>Martedì</th><th>Mercoledì</th><th>Giovedì</th><th>Venerdì</th>
-          <th class="sab">✦ Sabato</th>
+          <th>Sabato</th>
         </tr>
       </thead>
       <tbody>
         <tr>
-          <td class="cat"><span class="cat-ico">🍞</span><span class="cat-label">Pane</span></td>
-          <td><span class="prod-main">Semintegrale</span><span class="prod-sec">+ Integrale</span></td>
-          <td><span class="prod-main">Semintegrale</span><span class="prod-sec">+ Grano duro</span></td>
-          <td><span class="prod-main">Semintegrale</span><span class="prod-sec">+ Sciapo</span></td>
-          <td><span class="prod-main">Semintegrale</span><span class="prod-sec">+ Multi cereali</span></td>
-          <td><span class="prod-main">Semintegrale</span><span class="prod-sec">+ Farro</span></td>
-          <td><span class="prod-main">Semintegrale</span><span class="prod-special">+ richiesto + special</span></td>
+          <td>Pane</td>
+          <td>Semintegrale<br>Integrale</td>
+          <td>Semintegrale<br>Grano duro</td>
+          <td>Semintegrale<br>Sciapo</td>
+          <td>Semintegrale<br>Multi cereali</td>
+          <td>Semintegrale<br>Farro</td>
+          <td><span class="prod-sab">su richiesta</span></td>
         </tr>
         <tr>
-          <td class="cat"><span class="cat-ico">🥖</span><span class="cat-label">Pane da panino</span></td>
-          <td><span class="prod-main">Panini al latte</span></td>
-          <td><span class="prod-main">Ciabatte</span></td>
-          <td><span class="prod-main">Panini all'olio</span></td>
-          <td><span class="prod-main">Rosetta</span></td>
-          <td><span class="prod-main">Baguette</span></td>
-          <td><span class="prod-special">su richiesta + special</span></td>
+          <td>Pane da panino</td>
+          <td>Panini al latte</td>
+          <td>Ciabatte</td>
+          <td>Panini all'olio</td>
+          <td>Rosetta</td>
+          <td>Baguette</td>
+          <td><span class="prod-sab">su richiesta</span></td>
         </tr>
         <tr>
-          <td class="cat"><span class="cat-ico">🍔</span><span class="cat-label">Pan brioche</span></td>
-          <td><span class="prod-main">Buns</span></td>
-          <td><span class="prod-main">Pane in cassetta</span></td>
-          <td><span class="prod-main">Buns</span></td>
-          <td><span class="prod-main">Hot dog</span></td>
-          <td><span class="prod-main">Buns</span></td>
-          <td><span class="prod-special">su richiesta + special</span></td>
+          <td>Pan brioche</td>
+          <td>Buns</td>
+          <td>Pane in cassetta</td>
+          <td>Buns</td>
+          <td>Hot dog</td>
+          <td>Buns</td>
+          <td><span class="prod-sab">su richiesta</span></td>
         </tr>
         <tr>
-          <td class="cat"><span class="cat-ico">🫓</span><span class="cat-label">Focaccia</span></td>
-          <td><span class="prod-main">Grano duro</span><span class="prod-sec">+ Pizza in teglia</span></td>
-          <td><span class="prod-main">Grano duro</span><span class="prod-sec">+ Gusto special</span></td>
-          <td><span class="prod-main">Grano duro</span><span class="prod-sec">+ Pizza in teglia</span></td>
-          <td><span class="prod-main">Grano duro</span><span class="prod-sec">+ Gusto special</span></td>
-          <td><span class="prod-main">Grano duro</span><span class="prod-sec">+ Pizza in teglia</span></td>
-          <td><span class="prod-main">Grano duro</span><span class="prod-special">+ richiesto + special</span></td>
+          <td>Focaccia</td>
+          <td>Grano duro<br>Pizza in teglia</td>
+          <td>Grano duro<br>Gusto special</td>
+          <td>Grano duro<br>Pizza in teglia</td>
+          <td>Grano duro<br>Gusto special</td>
+          <td>Grano duro<br>Pizza in teglia</td>
+          <td>Grano duro<br><span class="prod-sab">su richiesta</span></td>
         </tr>
         <tr>
-          <td class="cat"><span class="cat-ico">🧁</span><span class="cat-label">Brioche</span></td>
-          <td><span class="prod-main">Pangocciolo</span><span class="prod-sec">+ Maritozzi</span></td>
-          <td><span class="prod-main">Pangocciolo</span><span class="prod-sec">+ Cinnamon roll</span></td>
-          <td><span class="prod-main">Pangocciolo</span><span class="prod-sec">+ Brioche col tuppo</span></td>
-          <td><span class="prod-main">Pangocciolo</span><span class="prod-sec">+ Veneziana</span></td>
-          <td><span class="prod-main">Pangocciolo</span><span class="prod-sec">+ Integrale</span></td>
-          <td><span class="prod-main">Pangocciolo</span><span class="prod-special">+ richiesto + special</span></td>
+          <td>Brioche</td>
+          <td>Pangocciolo<br>Maritozzi</td>
+          <td>Pangocciolo<br>Cinnamon roll</td>
+          <td>Pangocciolo<br>Brioche col tuppo</td>
+          <td>Pangocciolo<br>Veneziana</td>
+          <td>Pangocciolo<br>Integrale</td>
+          <td>Pangocciolo<br><span class="prod-sab">su richiesta</span></td>
         </tr>
         <tr>
-          <td class="cat"><span class="cat-ico">🥐</span><span class="cat-label">Viennoiserie</span></td>
-          <td><span class="prod-main">Cornetto</span><span class="prod-sec">+ Girella</span></td>
-          <td><span class="prod-main">Cornetto</span><span class="prod-sec">+ Treccia</span></td>
-          <td><span class="prod-main">Cornetto</span><span class="prod-sec">+ Vegana</span></td>
-          <td><span class="prod-main">Cornetto</span><span class="prod-sec">+ Pain au chocolat</span></td>
-          <td><span class="prod-main">Cornetto</span><span class="prod-sec">+ Danese</span></td>
-          <td><span class="prod-main">Cornetto</span><span class="prod-special">+ richiesto + special</span></td>
+          <td>Viennoiserie</td>
+          <td>Cornetto<br>Girella</td>
+          <td>Cornetto<br>Treccia</td>
+          <td>Cornetto<br>Vegana</td>
+          <td>Cornetto<br>Pain au chocolat</td>
+          <td>Cornetto<br>Danese</td>
+          <td>Cornetto<br><span class="prod-sab">su richiesta</span></td>
         </tr>
         <tr class="prod-always">
-          <td class="cat"><span class="cat-ico">🫙</span><span class="cat-label">Grissini · Cracker</span></td>
+          <td>Grissini · Cracker · Schiacciatine</td>
           <td colspan="6">Disponibili tutti i giorni</td>
         </tr>
         <tr class="prod-always">
-          <td class="cat"><span class="cat-ico">🍪</span><span class="cat-label">Dolci</span></td>
+          <td>Dolci</td>
           <td colspan="6">Biscotti · Crostate — disponibili tutti i giorni</td>
         </tr>
       </tbody>
       <tfoot>
-        <tr class="prod-footer">
-          <td colspan="7">Domenica chiuso &nbsp;·&nbsp; I prodotti del sabato vengono comunicati settimana per settimana</td>
-        </tr>
+        <tr><td colspan="7">Domenica chiuso · I prodotti del sabato vengono comunicati settimana per settimana</td></tr>
       </tfoot>
     </table>
   </div>
 
-  <!-- MOBILE: tab per giorno -->
+  <!-- MOBILE tab per giorno -->
   <div class="prod-mobile fi">
     <div class="prod-tabs">
       <button class="prod-tab active" data-day="lun">Lunedì</button>
@@ -529,76 +513,66 @@ footer{background:var(--fa);padding:72px 56px 40px;border-top:1px solid rgba(152
       <button class="prod-tab" data-day="mer">Mercoledì</button>
       <button class="prod-tab" data-day="gio">Giovedì</button>
       <button class="prod-tab" data-day="ven">Venerdì</button>
-      <button class="prod-tab sab" data-day="sab">✦ Sabato</button>
+      <button class="prod-tab sab" data-day="sab">Sabato</button>
     </div>
 
     <div class="prod-panel active" data-day="lun">
-      <div class="prod-row"><span class="prod-row-ico">🍞</span><div><p class="prod-row-cat">Pane</p><p class="prod-row-main">Semintegrale</p><p class="prod-row-sec">+ Integrale</p></div></div>
-      <div class="prod-row"><span class="prod-row-ico">🥖</span><div><p class="prod-row-cat">Pane da panino</p><p class="prod-row-main">Panini al latte</p></div></div>
-      <div class="prod-row"><span class="prod-row-ico">🍔</span><div><p class="prod-row-cat">Pan brioche</p><p class="prod-row-main">Buns</p></div></div>
-      <div class="prod-row"><span class="prod-row-ico">🫓</span><div><p class="prod-row-cat">Focaccia</p><p class="prod-row-main">Grano duro</p><p class="prod-row-sec">+ Pizza in teglia</p></div></div>
-      <div class="prod-row"><span class="prod-row-ico">🧁</span><div><p class="prod-row-cat">Brioche</p><p class="prod-row-main">Pangocciolo</p><p class="prod-row-sec">+ Maritozzi</p></div></div>
-      <div class="prod-row"><span class="prod-row-ico">🥐</span><div><p class="prod-row-cat">Viennoiserie</p><p class="prod-row-main">Cornetto</p><p class="prod-row-sec">+ Girella</p></div></div>
-      <div class="prod-always-note"><strong>Sempre disponibili</strong>Grissini · Cracker · Schiacciatine · Biscotti · Crostate</div>
+      <div class="prod-row"><span class="prod-row-cat">Pane</span><span class="prod-row-val">Semintegrale · Integrale</span></div>
+      <div class="prod-row"><span class="prod-row-cat">Pane da panino</span><span class="prod-row-val">Panini al latte</span></div>
+      <div class="prod-row"><span class="prod-row-cat">Pan brioche</span><span class="prod-row-val">Buns</span></div>
+      <div class="prod-row"><span class="prod-row-cat">Focaccia</span><span class="prod-row-val">Grano duro · Pizza in teglia</span></div>
+      <div class="prod-row"><span class="prod-row-cat">Brioche</span><span class="prod-row-val">Pangocciolo · Maritozzi</span></div>
+      <div class="prod-row"><span class="prod-row-cat">Viennoiserie</span><span class="prod-row-val">Cornetto · Girella</span></div>
+      <div class="prod-always-note"><b>Sempre</b><span>Grissini · Cracker · Biscotti · Crostate</span></div>
     </div>
-
     <div class="prod-panel" data-day="mar">
-      <div class="prod-row"><span class="prod-row-ico">🍞</span><div><p class="prod-row-cat">Pane</p><p class="prod-row-main">Semintegrale</p><p class="prod-row-sec">+ Grano duro</p></div></div>
-      <div class="prod-row"><span class="prod-row-ico">🥖</span><div><p class="prod-row-cat">Pane da panino</p><p class="prod-row-main">Ciabatte</p></div></div>
-      <div class="prod-row"><span class="prod-row-ico">🍔</span><div><p class="prod-row-cat">Pan brioche</p><p class="prod-row-main">Pane in cassetta</p></div></div>
-      <div class="prod-row"><span class="prod-row-ico">🫓</span><div><p class="prod-row-cat">Focaccia</p><p class="prod-row-main">Grano duro</p><p class="prod-row-sec">+ Gusto special</p></div></div>
-      <div class="prod-row"><span class="prod-row-ico">🧁</span><div><p class="prod-row-cat">Brioche</p><p class="prod-row-main">Pangocciolo</p><p class="prod-row-sec">+ Cinnamon roll</p></div></div>
-      <div class="prod-row"><span class="prod-row-ico">🥐</span><div><p class="prod-row-cat">Viennoiserie</p><p class="prod-row-main">Cornetto</p><p class="prod-row-sec">+ Treccia</p></div></div>
-      <div class="prod-always-note"><strong>Sempre disponibili</strong>Grissini · Cracker · Schiacciatine · Biscotti · Crostate</div>
+      <div class="prod-row"><span class="prod-row-cat">Pane</span><span class="prod-row-val">Semintegrale · Grano duro</span></div>
+      <div class="prod-row"><span class="prod-row-cat">Pane da panino</span><span class="prod-row-val">Ciabatte</span></div>
+      <div class="prod-row"><span class="prod-row-cat">Pan brioche</span><span class="prod-row-val">Pane in cassetta</span></div>
+      <div class="prod-row"><span class="prod-row-cat">Focaccia</span><span class="prod-row-val">Grano duro · Gusto special</span></div>
+      <div class="prod-row"><span class="prod-row-cat">Brioche</span><span class="prod-row-val">Pangocciolo · Cinnamon roll</span></div>
+      <div class="prod-row"><span class="prod-row-cat">Viennoiserie</span><span class="prod-row-val">Cornetto · Treccia</span></div>
+      <div class="prod-always-note"><b>Sempre</b><span>Grissini · Cracker · Biscotti · Crostate</span></div>
     </div>
-
     <div class="prod-panel" data-day="mer">
-      <div class="prod-row"><span class="prod-row-ico">🍞</span><div><p class="prod-row-cat">Pane</p><p class="prod-row-main">Semintegrale</p><p class="prod-row-sec">+ Sciapo</p></div></div>
-      <div class="prod-row"><span class="prod-row-ico">🥖</span><div><p class="prod-row-cat">Pane da panino</p><p class="prod-row-main">Panini all'olio</p></div></div>
-      <div class="prod-row"><span class="prod-row-ico">🍔</span><div><p class="prod-row-cat">Pan brioche</p><p class="prod-row-main">Buns</p></div></div>
-      <div class="prod-row"><span class="prod-row-ico">🫓</span><div><p class="prod-row-cat">Focaccia</p><p class="prod-row-main">Grano duro</p><p class="prod-row-sec">+ Pizza in teglia</p></div></div>
-      <div class="prod-row"><span class="prod-row-ico">🧁</span><div><p class="prod-row-cat">Brioche</p><p class="prod-row-main">Pangocciolo</p><p class="prod-row-sec">+ Brioche col tuppo</p></div></div>
-      <div class="prod-row"><span class="prod-row-ico">🥐</span><div><p class="prod-row-cat">Viennoiserie</p><p class="prod-row-main">Cornetto</p><p class="prod-row-sec">+ Vegana</p></div></div>
-      <div class="prod-always-note"><strong>Sempre disponibili</strong>Grissini · Cracker · Schiacciatine · Biscotti · Crostate</div>
+      <div class="prod-row"><span class="prod-row-cat">Pane</span><span class="prod-row-val">Semintegrale · Sciapo</span></div>
+      <div class="prod-row"><span class="prod-row-cat">Pane da panino</span><span class="prod-row-val">Panini all'olio</span></div>
+      <div class="prod-row"><span class="prod-row-cat">Pan brioche</span><span class="prod-row-val">Buns</span></div>
+      <div class="prod-row"><span class="prod-row-cat">Focaccia</span><span class="prod-row-val">Grano duro · Pizza in teglia</span></div>
+      <div class="prod-row"><span class="prod-row-cat">Brioche</span><span class="prod-row-val">Pangocciolo · Brioche col tuppo</span></div>
+      <div class="prod-row"><span class="prod-row-cat">Viennoiserie</span><span class="prod-row-val">Cornetto · Vegana</span></div>
+      <div class="prod-always-note"><b>Sempre</b><span>Grissini · Cracker · Biscotti · Crostate</span></div>
     </div>
-
     <div class="prod-panel" data-day="gio">
-      <div class="prod-row"><span class="prod-row-ico">🍞</span><div><p class="prod-row-cat">Pane</p><p class="prod-row-main">Semintegrale</p><p class="prod-row-sec">+ Multi cereali</p></div></div>
-      <div class="prod-row"><span class="prod-row-ico">🥖</span><div><p class="prod-row-cat">Pane da panino</p><p class="prod-row-main">Rosetta</p></div></div>
-      <div class="prod-row"><span class="prod-row-ico">🍔</span><div><p class="prod-row-cat">Pan brioche</p><p class="prod-row-main">Hot dog</p></div></div>
-      <div class="prod-row"><span class="prod-row-ico">🫓</span><div><p class="prod-row-cat">Focaccia</p><p class="prod-row-main">Grano duro</p><p class="prod-row-sec">+ Gusto special</p></div></div>
-      <div class="prod-row"><span class="prod-row-ico">🧁</span><div><p class="prod-row-cat">Brioche</p><p class="prod-row-main">Pangocciolo</p><p class="prod-row-sec">+ Veneziana</p></div></div>
-      <div class="prod-row"><span class="prod-row-ico">🥐</span><div><p class="prod-row-cat">Viennoiserie</p><p class="prod-row-main">Cornetto</p><p class="prod-row-sec">+ Pain au chocolat</p></div></div>
-      <div class="prod-always-note"><strong>Sempre disponibili</strong>Grissini · Cracker · Schiacciatine · Biscotti · Crostate</div>
+      <div class="prod-row"><span class="prod-row-cat">Pane</span><span class="prod-row-val">Semintegrale · Multi cereali</span></div>
+      <div class="prod-row"><span class="prod-row-cat">Pane da panino</span><span class="prod-row-val">Rosetta</span></div>
+      <div class="prod-row"><span class="prod-row-cat">Pan brioche</span><span class="prod-row-val">Hot dog</span></div>
+      <div class="prod-row"><span class="prod-row-cat">Focaccia</span><span class="prod-row-val">Grano duro · Gusto special</span></div>
+      <div class="prod-row"><span class="prod-row-cat">Brioche</span><span class="prod-row-val">Pangocciolo · Veneziana</span></div>
+      <div class="prod-row"><span class="prod-row-cat">Viennoiserie</span><span class="prod-row-val">Cornetto · Pain au chocolat</span></div>
+      <div class="prod-always-note"><b>Sempre</b><span>Grissini · Cracker · Biscotti · Crostate</span></div>
     </div>
-
     <div class="prod-panel" data-day="ven">
-      <div class="prod-row"><span class="prod-row-ico">🍞</span><div><p class="prod-row-cat">Pane</p><p class="prod-row-main">Semintegrale</p><p class="prod-row-sec">+ Farro</p></div></div>
-      <div class="prod-row"><span class="prod-row-ico">🥖</span><div><p class="prod-row-cat">Pane da panino</p><p class="prod-row-main">Baguette</p></div></div>
-      <div class="prod-row"><span class="prod-row-ico">🍔</span><div><p class="prod-row-cat">Pan brioche</p><p class="prod-row-main">Buns</p></div></div>
-      <div class="prod-row"><span class="prod-row-ico">🫓</span><div><p class="prod-row-cat">Focaccia</p><p class="prod-row-main">Grano duro</p><p class="prod-row-sec">+ Pizza in teglia</p></div></div>
-      <div class="prod-row"><span class="prod-row-ico">🧁</span><div><p class="prod-row-cat">Brioche</p><p class="prod-row-main">Pangocciolo</p><p class="prod-row-sec">+ Integrale</p></div></div>
-      <div class="prod-row"><span class="prod-row-ico">🥐</span><div><p class="prod-row-cat">Viennoiserie</p><p class="prod-row-main">Cornetto</p><p class="prod-row-sec">+ Danese</p></div></div>
-      <div class="prod-always-note"><strong>Sempre disponibili</strong>Grissini · Cracker · Schiacciatine · Biscotti · Crostate</div>
+      <div class="prod-row"><span class="prod-row-cat">Pane</span><span class="prod-row-val">Semintegrale · Farro</span></div>
+      <div class="prod-row"><span class="prod-row-cat">Pane da panino</span><span class="prod-row-val">Baguette</span></div>
+      <div class="prod-row"><span class="prod-row-cat">Pan brioche</span><span class="prod-row-val">Buns</span></div>
+      <div class="prod-row"><span class="prod-row-cat">Focaccia</span><span class="prod-row-val">Grano duro · Pizza in teglia</span></div>
+      <div class="prod-row"><span class="prod-row-cat">Brioche</span><span class="prod-row-val">Pangocciolo · Integrale</span></div>
+      <div class="prod-row"><span class="prod-row-cat">Viennoiserie</span><span class="prod-row-val">Cornetto · Danese</span></div>
+      <div class="prod-always-note"><b>Sempre</b><span>Grissini · Cracker · Biscotti · Crostate</span></div>
     </div>
-
     <div class="prod-panel" data-day="sab">
-      <div class="prod-row"><span class="prod-row-ico">🍞</span><div><p class="prod-row-cat">Pane</p><p class="prod-row-main">Semintegrale</p><span class="prod-row-special">+ tutto il richiesto + special</span></div></div>
-      <div class="prod-row"><span class="prod-row-ico">🥖</span><div><p class="prod-row-cat">Pane da panino</p><span class="prod-row-special">su richiesta + special</span></div></div>
-      <div class="prod-row"><span class="prod-row-ico">🍔</span><div><p class="prod-row-cat">Pan brioche</p><span class="prod-row-special">su richiesta + special</span></div></div>
-      <div class="prod-row"><span class="prod-row-ico">🫓</span><div><p class="prod-row-cat">Focaccia</p><p class="prod-row-main">Grano duro</p><span class="prod-row-special">+ richiesto + special</span></div></div>
-      <div class="prod-row"><span class="prod-row-ico">🧁</span><div><p class="prod-row-cat">Brioche</p><p class="prod-row-main">Pangocciolo</p><span class="prod-row-special">+ richiesto + special</span></div></div>
-      <div class="prod-row"><span class="prod-row-ico">🥐</span><div><p class="prod-row-cat">Viennoiserie</p><p class="prod-row-main">Cornetto</p><span class="prod-row-special">+ richiesto + special</span></div></div>
-      <div class="prod-always-note"><strong>Sempre disponibili</strong>Grissini · Cracker · Schiacciatine · Biscotti · Crostate</div>
+      <div class="prod-row"><span class="prod-row-cat">Pane</span><span class="prod-row-val">Semintegrale + <span class="prod-row-special">su richiesta</span></span></div>
+      <div class="prod-row"><span class="prod-row-cat">Pane da panino</span><span class="prod-row-val"><span class="prod-row-special">su richiesta</span></span></div>
+      <div class="prod-row"><span class="prod-row-cat">Pan brioche</span><span class="prod-row-val"><span class="prod-row-special">su richiesta</span></span></div>
+      <div class="prod-row"><span class="prod-row-cat">Focaccia</span><span class="prod-row-val">Grano duro + <span class="prod-row-special">su richiesta</span></span></div>
+      <div class="prod-row"><span class="prod-row-cat">Brioche</span><span class="prod-row-val">Pangocciolo + <span class="prod-row-special">su richiesta</span></span></div>
+      <div class="prod-row"><span class="prod-row-cat">Viennoiserie</span><span class="prod-row-val">Cornetto + <span class="prod-row-special">su richiesta</span></span></div>
+      <div class="prod-always-note"><b>Sempre</b><span>Grissini · Cracker · Biscotti · Crostate</span></div>
     </div>
-
-    <p class="prod-note-footer">Domenica chiuso · I prodotti speciali del sabato vengono comunicati ogni settimana</p>
+    <p class="prod-note-footer">Domenica chiuso · I prodotti del sabato vengono comunicati ogni settimana</p>
   </div>
-</section>
-
-<!-- MANIFESTO -->
-<section id="manifesto">
-  <div class="fi">
+</section>  <div class="fi">
     <span class="lbl">Il metodo</span>
     <h2 class="ttl">Artigianale nella<br>sostanza.</h2>
     <p class="sub" style="margin-bottom:32px">Non usiamo quella parola come decorazione. Significa impasti a mano, lievito madre mantenuto ogni giorno, farine selezionate. Sapere perché si fa ogni cosa.</p>
