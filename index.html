@@ -19,8 +19,7 @@
 }
 html{scroll-behavior:smooth}
 body{font-family:var(--font);background:var(--cr);color:var(--sc);overflow-x:hidden;-webkit-font-smoothing:antialiased}
-.fi{opacity:0;transform:translateY(18px);transition:opacity .55s ease,transform .55s ease}
-.fi.on{opacity:1;transform:translateY(0)}
+.fi{opacity:1;transform:none}
 
 /* ── NAV ── */
 nav{
@@ -645,13 +644,21 @@ window.addEventListener('scroll', () => {
 }, { passive: true });
 const io = new IntersectionObserver(entries => {
   entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('on'); });
-}, { threshold: 0.07, rootMargin: '0px 0px -20px 0px' });
+}, { threshold: 0, rootMargin: '0px 0px -40px 0px' });
 document.querySelectorAll('.fi').forEach(el => io.observe(el));
 window.addEventListener('DOMContentLoaded', () => {
+  // Hero immediato
   document.querySelectorAll('#hero .fi').forEach((el, i) => {
     el.style.transitionDelay = i * 0.1 + 's';
     requestAnimationFrame(() => requestAnimationFrame(() => el.classList.add('on')));
   });
+  // Fallback: dopo 400ms forza tutti gli elementi già nel viewport
+  setTimeout(() => {
+    document.querySelectorAll('.fi:not(.on)').forEach(el => {
+      const r = el.getBoundingClientRect();
+      if (r.top < window.innerHeight) el.classList.add('on');
+    });
+  }, 400);
 });
 </script>
 </body>
